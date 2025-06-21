@@ -45,7 +45,7 @@ export const LandingPage = ({ onGetStarted }: LandingPageProps) => {
                 <Button 
                   onClick={onGetStarted}
                   size="lg"
-                  className="bg-blue-600 hover:bg-blue-700 text-white px-12 sm:px-16 py-6 sm:py-8 text-lg sm:text-xl font-medium rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 border-0 w-full sm:w-auto min-h-[64px] touch-manipulation"
+                  className="bg-custom-orange hover:bg-orange-600 text-white px-12 sm:px-16 py-6 sm:py-8 text-lg sm:text-xl font-medium rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 border-0 w-full sm:w-auto min-h-[64px] touch-manipulation"
                 >
                   Get Started
                   <ArrowRight className="ml-3 sm:ml-4 h-5 w-5 sm:h-6 sm:w-6" />
