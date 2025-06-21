@@ -254,24 +254,12 @@ export const SimpleGPACalculator = ({ profile, onEditProfile, onBackToHome }: Si
         {/* GPA Summary */}
         <Card className="mb-12 sm:mb-16 border-0 shadow-lg rounded-3xl sm:rounded-[2rem] overflow-hidden bg-white">
           <CardContent className="p-8 sm:p-12">
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-12">
+            <div className="flex justify-center">
               <div className="text-center">
                 <div className="text-5xl sm:text-6xl font-normal text-blue-600 mb-3 tracking-tight">
                   {gpaData.cumulative_gpa.toFixed(2)}
                 </div>
                 <div className="text-gray-500 text-lg">Cumulative GPA</div>
-              </div>
-              <div className="text-center">
-                <div className="text-5xl sm:text-6xl font-normal text-gray-800 mb-3 tracking-tight">
-                  {gpaData.total_credits}
-                </div>
-                <div className="text-gray-500 text-lg">Total Credits</div>
-              </div>
-              <div className="text-center">
-                <div className="text-5xl sm:text-6xl font-normal text-gray-800 mb-3 tracking-tight">
-                  {Object.keys(groupModulesByYearAndSemester()).reduce((acc, year) => acc + Object.keys(groupModulesByYearAndSemester()[year]).length, 0)}
-                </div>
-                <div className="text-gray-500 text-lg">Semesters</div>
               </div>
             </div>
           </CardContent>
