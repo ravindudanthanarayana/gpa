@@ -129,14 +129,17 @@ export const SimpleGPACalculator = ({ profile, onEditProfile, onBackToHome }: Si
 
     const allModulesGraded = moduleList.every(m => m.grade);
 
-    if (allModulesGraded) {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
     if (cumulativeGPA > 3.7 && allModulesGraded && validModules.length > 0) {
       setShowCelebration(true);
     }
   }, []);
+
+  useEffect(() => {
+    const allModulesGraded = modules.every(m => m.grade);
+    if (allModulesGraded && modules.length > 0) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }, [modules]);
 
   useEffect(() => {
     // Load modules from localStorage
