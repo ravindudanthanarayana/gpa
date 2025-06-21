@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -8,6 +7,16 @@ export default {
 		"./components/**/*.{ts,tsx}",
 		"./app/**/*.{ts,tsx}",
 		"./src/**/*.{ts,tsx}",
+	],
+	safelist: [
+		'bg-green-100/50',
+		'border-green-300',
+		'bg-yellow-100/50',
+		'border-yellow-300',
+		'bg-orange-100/50',
+		'border-orange-300',
+		'bg-red-100/50',
+		'border-red-300',
 	],
 	prefix: "",
 	theme: {

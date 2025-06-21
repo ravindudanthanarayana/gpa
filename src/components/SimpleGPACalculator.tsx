@@ -4,6 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Input } from '@/components/ui/input';
 import { Edit2, ArrowLeft, Trophy, Star } from 'lucide-react';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 interface Profile {
   degreeProgram: string;
@@ -172,14 +173,30 @@ export const SimpleGPACalculator = ({ profile, onEditProfile, onBackToHome }: Si
     calculateGPA(updatedModules);
   };
 
-  const groupModulesBySemester = () => {
-    const grouped: { [key: string]: Module[] } = {};
+  const groupModulesByYearAndSemester = () => {
+    const grouped: { [year: string]: { [semester: string]: Module[] } } = {};
     modules.forEach(module => {
-      const key = `Year ${module.year} - Semester ${module.semester}`;
-      if (!grouped[key]) grouped[key] = [];
-      grouped[key].push(module);
+      const yearKey = module.year.toString();
+      const semesterKey = module.semester.toString();
+
+      if (!grouped[yearKey]) {
+        grouped[yearKey] = {};
+      }
+      if (!grouped[yearKey][semesterKey]) {
+        grouped[yearKey][semesterKey] = [];
+      }
+      grouped[yearKey][semesterKey].push(module);
     });
     return grouped;
+  };
+
+  const getGradeColorClass = (grade: string | null): string => {
+    if (!grade) return 'bg-white border-gray-200/80';
+    if (grade.startsWith('A')) return 'bg-green-100/50 border-green-300';
+    if (grade.startsWith('B')) return 'bg-yellow-100/50 border-yellow-300';
+    if (grade.startsWith('C')) return 'bg-orange-100/50 border-orange-300';
+    if (grade.startsWith('D') || grade.startsWith('E')) return 'bg-red-100/50 border-red-300';
+    return 'bg-white border-gray-200/80';
   };
 
   return (
@@ -236,84 +253,87 @@ export const SimpleGPACalculator = ({ profile, onEditProfile, onBackToHome }: Si
 
         {/* GPA Summary */}
         <Card className="mb-12 sm:mb-16 border-0 shadow-lg rounded-3xl sm:rounded-[2rem] overflow-hidden bg-white">
-          <CardContent className="p-8 sm:p-12 lg:p-16">
+          <CardContent className="p-8 sm:p-12">
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-12">
               <div className="text-center">
-                <div className="text-5xl sm:text-6xl font-light text-blue-600 mb-3 sm:mb-4">
+                <div className="text-5xl sm:text-6xl font-normal text-blue-600 mb-3 tracking-tight">
                   {gpaData.cumulative_gpa.toFixed(2)}
                 </div>
-                <div className="text-gray-600 text-lg sm:text-xl">Cumulative GPA</div>
+                <div className="text-gray-500 text-lg">Cumulative GPA</div>
               </div>
               <div className="text-center">
-                <div className="text-5xl sm:text-6xl font-light text-gray-900 mb-3 sm:mb-4">
+                <div className="text-5xl sm:text-6xl font-normal text-gray-800 mb-3 tracking-tight">
                   {gpaData.total_credits}
                 </div>
-                <div className="text-gray-600 text-lg sm:text-xl">Total Credits</div>
+                <div className="text-gray-500 text-lg">Total Credits</div>
               </div>
               <div className="text-center">
-                <div className="text-5xl sm:text-6xl font-light text-gray-900 mb-3 sm:mb-4">
-                  {Object.keys(groupModulesBySemester()).length}
+                <div className="text-5xl sm:text-6xl font-normal text-gray-800 mb-3 tracking-tight">
+                  {Object.keys(groupModulesByYearAndSemester()).reduce((acc, year) => acc + Object.keys(groupModulesByYearAndSemester()[year]).length, 0)}
                 </div>
-                <div className="text-gray-600 text-lg sm:text-xl">Semesters</div>
+                <div className="text-gray-500 text-lg">Semesters</div>
               </div>
             </div>
           </CardContent>
         </Card>
 
-        {/* Modules by Semester */}
-        <div className="space-y-8 sm:space-y-12">
-          {Object.entries(groupModulesBySemester()).map(([semesterKey, semesterModules]) => (
-            <Card key={semesterKey} className="border-0 shadow-lg rounded-3xl sm:rounded-[2rem] overflow-hidden bg-white">
-              <CardHeader className="bg-gray-50 p-8 sm:p-12">
-                <CardTitle className="text-2xl sm:text-3xl font-light text-gray-900">{semesterKey}</CardTitle>
-              </CardHeader>
-              <CardContent className="p-6 sm:p-8 lg:p-12">
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
-                  {semesterModules.map((module, moduleIndex) => {
-                    const globalIndex = modules.findIndex(m => m.id === module.id);
-                    
-                    return (
-                      <div key={module.id} className="space-y-4 sm:space-y-6">
-                        {/* Module Name - Read Only */}
-                        <div className="text-center p-4 sm:p-6 bg-gray-100 rounded-xl text-lg sm:text-xl font-medium text-gray-900">
-                          {module.module_name}
+        {/* Modules Section */}
+        <Tabs defaultValue={profile.currentYear.toString()} className="w-full">
+          <TabsList className="grid w-full grid-cols-4 bg-gray-100 rounded-full h-12 p-1">
+            {Object.keys(groupModulesByYearAndSemester()).map(year => (
+              <TabsTrigger key={year} value={year} className="rounded-full text-base data-[state=active]:bg-white data-[state=active]:shadow-md">Year {year}</TabsTrigger>
+            ))}
+          </TabsList>
+
+          {Object.entries(groupModulesByYearAndSemester()).map(([year, semesters]) => (
+            <TabsContent key={year} value={year} className="space-y-10 mt-6">
+              {Object.entries(semesters).map(([semester, semesterModules]) => (
+                <div key={semester}>
+                  <h3 className="text-lg font-medium text-gray-500 mb-4 pl-2">Semester {semester}</h3>
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    {semesterModules.map((module) => {
+                      const globalIndex = modules.findIndex(m => m.id === module.id);
+                      
+                      return (
+                        <div key={module.id} className={`p-3 rounded-xl border space-y-2 transition-all hover:shadow-lg hover:border-blue-300 ${getGradeColorClass(module.grade)}`}>
+                          <div className="text-center font-semibold text-gray-700 text-xs truncate">
+                            {module.module_name}
+                          </div>
+                          
+                          <Input
+                            type="number"
+                            placeholder="Credits"
+                            value={module.credits}
+                            onChange={(e) => handleModuleUpdate(globalIndex, 'credits', parseInt(e.target.value) || 4)}
+                            min="1"
+                            max="6"
+                            className="border-gray-200 rounded-lg bg-gray-50/80 h-9 text-xs touch-manipulation text-center focus:bg-white"
+                          />
+                          
+                          <Select
+                            value={module.grade || ''}
+                            onValueChange={(value) => handleModuleUpdate(globalIndex, 'grade', value)}
+                          >
+                            <SelectTrigger className={`rounded-lg transition-colors h-9 text-xs touch-manipulation ${module.grade ? 'border-blue-300 bg-blue-50 text-blue-700 font-semibold' : 'border-gray-200 bg-gray-50/80'}`}>
+                              <SelectValue placeholder="Grade" />
+                            </SelectTrigger>
+                            <SelectContent className="rounded-lg border-gray-200">
+                              {grades.map((grade) => (
+                                <SelectItem key={grade} value={grade} className="py-1 text-xs">
+                                  {grade} ({gradePoints[grade]})
+                                </SelectItem>
+                              ))}
+                            </SelectContent>
+                          </Select>
                         </div>
-                        
-                        {/* Credits Input */}
-                        <Input
-                          type="number"
-                          placeholder="Credits"
-                          value={module.credits}
-                          onChange={(e) => handleModuleUpdate(globalIndex, 'credits', parseInt(e.target.value) || 4)}
-                          min="1"
-                          max="6"
-                          className="border-gray-200 rounded-xl bg-white h-12 sm:h-14 text-base sm:text-lg touch-manipulation text-center"
-                        />
-                        
-                        {/* Grade Selection */}
-                        <Select
-                          value={module.grade || ''}
-                          onValueChange={(value) => handleModuleUpdate(globalIndex, 'grade', value)}
-                        >
-                          <SelectTrigger className={`rounded-xl transition-colors h-12 sm:h-14 text-base sm:text-lg touch-manipulation ${module.grade ? 'border-blue-300 bg-blue-50' : 'border-gray-200 bg-white'}`}>
-                            <SelectValue placeholder="Select Grade" />
-                          </SelectTrigger>
-                          <SelectContent className="rounded-xl border-gray-200">
-                            {grades.map((grade) => (
-                              <SelectItem key={grade} value={grade} className="py-3 sm:py-4 text-base sm:text-lg">
-                                {grade} ({gradePoints[grade]})
-                              </SelectItem>
-                            ))}
-                          </SelectContent>
-                        </Select>
-                      </div>
-                    );
-                  })}
+                      );
+                    })}
+                  </div>
                 </div>
-              </CardContent>
-            </Card>
+              ))}
+            </TabsContent>
           ))}
-        </div>
+        </Tabs>
       </div>
     </div>
   );
