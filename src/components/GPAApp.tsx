@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { LandingPage } from './LandingPage';
 import { ProfileSetup } from './ProfileSetup';
@@ -6,6 +5,7 @@ import { SimpleGPACalculator } from './SimpleGPACalculator';
 
 interface Profile {
   degreeProgram: string;
+  specialization?: string;
   currentYear: number;
   currentSemester: number;
 }

@@ -8,6 +8,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 interface Profile {
   degreeProgram: string;
+  specialization?: string;
   currentYear: number;
   currentSemester: number;
 }
@@ -29,31 +30,25 @@ interface SimpleGPACalculatorProps {
   onBackToHome: () => void;
 }
 
-// Updated curriculum structure with simplified module names
+// Updated curriculum structure with new degree programs and module names
 const curriculum = {
-  'Information Technology': {
-    1: { 1: ['IT1', 'IT2', 'IT3', 'IT4'], 2: ['IT5', 'IT6', 'IT7', 'IT8'] },
-    2: { 1: ['IT9', 'IT10', 'IT11', 'IT12'], 2: ['IT13', 'IT14', 'IT15', 'IT16'] },
+  'B.Sc. (Hons) in Information Technology': {
+    1: { 1: ['IP', 'MC', 'FC', 'DCN'], 2: ['OOP', 'DSA', 'TW', 'DM'] },
+    2: { 1: ['PAS', 'SE', 'AI', 'DDD'], 2: ['IT13', 'IT14', 'IT15', 'IT16'] },
     3: { 1: ['IT17', 'IT18', 'IT19', 'IT20'], 2: ['IT21', 'IT22', 'IT23', 'IT24'] },
     4: { 1: ['IT25', 'IT26', 'IT27', 'IT28'], 2: ['IT29', 'IT30', 'IT31', 'IT32'] }
   },
-  'Software Engineering': {
-    1: { 1: ['SE1', 'SE2', 'SE3', 'SE4'], 2: ['SE5', 'SE6', 'SE7', 'SE8'] },
-    2: { 1: ['SE9', 'SE10', 'SE11', 'SE12'], 2: ['SE13', 'SE14', 'SE15', 'SE16'] },
-    3: { 1: ['SE17', 'SE18', 'SE19', 'SE20'], 2: ['SE21', 'SE22', 'SE23', 'SE24'] },
-    4: { 1: ['SE25', 'SE26', 'SE27', 'SE28'], 2: ['SE29', 'SE30', 'SE31', 'SE32'] }
+  'B.Sc. (Hons) in Computer Science (CS)': {
+    1: { 1: ['CS1', 'CS2', 'CS3', 'CS4'], 2: ['CS5', 'CS6', 'CS7', 'CS8'] },
+    2: { 1: ['CS9', 'CS10', 'CS11', 'CS12'], 2: ['CS13', 'CS14', 'CS15', 'CS16'] },
+    3: { 1: ['CS17', 'CS18', 'CS19', 'CS20'], 2: ['CS21', 'CS22', 'CS23', 'CS24'] },
+    4: { 1: ['CS25', 'CS26', 'CS27', 'CS28'], 2: ['CS29', 'CS30', 'CS31', 'CS32'] }
   },
-  'Data Science': {
-    1: { 1: ['DS1', 'DS2', 'DS3', 'DS4'], 2: ['DS5', 'DS6', 'DS7', 'DS8'] },
-    2: { 1: ['DS9', 'DS10', 'DS11', 'DS12'], 2: ['DS13', 'DS14', 'DS15', 'DS16'] },
-    3: { 1: ['DS17', 'DS18', 'DS19', 'DS20'], 2: ['DS21', 'DS22', 'DS23', 'DS24'] },
-    4: { 1: ['DS25', 'DS26', 'DS27', 'DS28'], 2: ['DS29', 'DS30', 'DS31', 'DS32'] }
-  },
-  'Information Systems Engineering': {
-    1: { 1: ['ISE1', 'ISE2', 'ISE3', 'ISE4'], 2: ['ISE5', 'ISE6', 'ISE7', 'ISE8'] },
-    2: { 1: ['ISE9', 'ISE10', 'ISE11', 'ISE12'], 2: ['ISE13', 'ISE14', 'ISE15', 'ISE16'] },
-    3: { 1: ['ISE17', 'ISE18', 'ISE19', 'ISE20'], 2: ['ISE21', 'ISE22', 'ISE23', 'ISE24'] },
-    4: { 1: ['ISE25', 'ISE26', 'ISE27', 'ISE28'], 2: ['ISE29', 'ISE30', 'ISE31', 'ISE32'] }
+  'B.Sc. (Hons) in Computer Systems Engineering (CSE)': {
+    1: { 1: ['CSE1', 'CSE2', 'CSE3', 'CSE4'], 2: ['CSE5', 'CSE6', 'CSE7', 'CSE8'] },
+    2: { 1: ['CSE9', 'CSE10', 'CSE11', 'CSE12'], 2: ['CSE13', 'CSE14', 'CSE15', 'CSE16'] },
+    3: { 1: ['CSE17', 'CSE18', 'CSE19', 'CSE20'], 2: ['CSE21', 'CSE22', 'CSE23', 'CSE24'] },
+    4: { 1: ['CSE25', 'CSE26', 'CSE27', 'CSE28'], 2: ['CSE29', 'CSE30', 'CSE31', 'CSE32'] }
   }
 };
 
@@ -209,7 +204,10 @@ export const SimpleGPACalculator = ({ profile, onEditProfile, onBackToHome }: Si
               GPA Calculator
             </h1>
             <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6 text-gray-600">
-              <span className="text-lg sm:text-xl truncate">{profile.degreeProgram}</span>
+              <span className="text-lg sm:text-xl truncate">
+                {profile.degreeProgram}
+                {profile.specialization && ` - ${profile.specialization}`}
+              </span>
               <span className="hidden sm:inline">•</span>
               <span className="text-base sm:text-lg">Year {profile.currentYear}, Semester {profile.currentSemester}</span>
               <Button onClick={onEditProfile} variant="outline" size="sm" className="rounded-full border-gray-300 w-fit touch-manipulation">

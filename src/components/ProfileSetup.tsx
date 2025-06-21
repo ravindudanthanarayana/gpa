@@ -7,6 +7,7 @@ import { ArrowLeft } from 'lucide-react';
 
 interface Profile {
   degreeProgram: string;
+  specialization?: string;
   currentYear: number;
   currentSemester: number;
 }
@@ -19,24 +20,41 @@ interface ProfileSetupProps {
 export const ProfileSetup = ({ onProfileComplete, onBack }: ProfileSetupProps) => {
   const [formData, setFormData] = useState({
     degreeProgram: '',
+    specialization: '',
     currentYear: 1,
     currentSemester: 1,
   });
 
   const degreePrograms = [
-    'Information Technology',
-    'Software Engineering',
-    'Data Science',
-    'Information Systems Engineering'
+    'B.Sc. (Hons) in Information Technology',
+    'B.Sc. (Hons) in Computer Science (CS)',
+    'B.Sc. (Hons) in Computer Systems Engineering (CSE)'
+  ];
+
+  const specializations = [
+    'IT',
+    'SE',
+    'CSNE',
+    'ISE',
+    'CS',
+    'DS',
+    'IM',
+    'AI'
   ];
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (formData.degreeProgram) {
+      // For Information Technology, specialization is required
+      if (formData.degreeProgram === 'B.Sc. (Hons) in Information Technology' && !formData.specialization) {
+        return;
+      }
       localStorage.removeItem('gpaModules');
       onProfileComplete(formData);
     }
   };
+
+  const showSpecialization = formData.degreeProgram === 'B.Sc. (Hons) in Information Technology';
 
   return (
     <div className="min-h-screen bg-white">
@@ -77,7 +95,7 @@ export const ProfileSetup = ({ onProfileComplete, onBack }: ProfileSetupProps) =
                 </Label>
                 <Select
                   value={formData.degreeProgram}
-                  onValueChange={(value) => setFormData({ ...formData, degreeProgram: value })}
+                  onValueChange={(value) => setFormData({ ...formData, degreeProgram: value, specialization: '' })}
                 >
                   <SelectTrigger className="h-14 sm:h-16 border-gray-200 rounded-xl text-lg sm:text-xl bg-gray-50 hover:bg-gray-100 transition-colors touch-manipulation">
                     <SelectValue placeholder="Select your degree program" />
@@ -91,6 +109,29 @@ export const ProfileSetup = ({ onProfileComplete, onBack }: ProfileSetupProps) =
                   </SelectContent>
                 </Select>
               </div>
+
+              {showSpecialization && (
+                <div className="space-y-4">
+                  <Label htmlFor="specialization" className="text-lg sm:text-xl font-medium text-gray-900">
+                    Specialization
+                  </Label>
+                  <Select
+                    value={formData.specialization}
+                    onValueChange={(value) => setFormData({ ...formData, specialization: value })}
+                  >
+                    <SelectTrigger className="h-14 sm:h-16 border-gray-200 rounded-xl text-lg sm:text-xl bg-gray-50 hover:bg-gray-100 transition-colors touch-manipulation">
+                      <SelectValue placeholder="Select your specialization" />
+                    </SelectTrigger>
+                    <SelectContent className="rounded-xl border-gray-200">
+                      {specializations.map((spec) => (
+                        <SelectItem key={spec} value={spec} className="text-lg sm:text-xl py-4">
+                          {spec}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+              )}
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
                 <div className="space-y-4">
@@ -137,7 +178,7 @@ export const ProfileSetup = ({ onProfileComplete, onBack }: ProfileSetupProps) =
                 <Button 
                   type="submit" 
                   className="w-full h-14 sm:h-16 bg-blue-600 hover:bg-blue-700 text-lg sm:text-xl font-medium rounded-xl transition-all duration-300 transform hover:scale-[1.02] shadow-lg hover:shadow-xl touch-manipulation"
-                  disabled={!formData.degreeProgram}
+                  disabled={!formData.degreeProgram || (showSpecialization && !formData.specialization)}
                 >
                   Continue
                 </Button>
