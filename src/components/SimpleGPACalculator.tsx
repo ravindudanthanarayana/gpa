@@ -73,6 +73,7 @@ export const SimpleGPACalculator = ({ profile, onEditProfile, onBackToHome }: Si
   const [modules, setModules] = useState<Module[]>([]);
   const [gpaData, setGpaData] = useState({ cumulative_gpa: 0, total_credits: 0 });
   const [showCelebration, setShowCelebration] = useState(false);
+  const [activeTab, setActiveTab] = useState(profile.currentYear.toString());
 
   const generateModules = useCallback(() => {
     const modules: Module[] = [];
@@ -127,6 +128,7 @@ export const SimpleGPACalculator = ({ profile, onEditProfile, onBackToHome }: Si
 
     if (cumulativeGPA > 3.7 && allModulesGraded && validModules.length > 0) {
       setShowCelebration(true);
+      setTimeout(() => setShowCelebration(false), 5000); // Auto-hide after 5 seconds
     }
   }, []);
 
@@ -136,6 +138,30 @@ export const SimpleGPACalculator = ({ profile, onEditProfile, onBackToHome }: Si
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   }, [modules]);
+
+  // Effect for auto-switching tabs
+  useEffect(() => {
+    if (!modules.length) return;
+
+    const modulesByYear = modules.reduce((acc, module) => {
+      (acc[module.year] = acc[module.year] || []).push(module);
+      return acc;
+    }, {} as Record<string, Module[]>);
+
+    const currentYearModules = modulesByYear[activeTab];
+    if (!currentYearModules || currentYearModules.length === 0) return;
+
+    const allInYearGraded = currentYearModules.every(m => m.grade);
+
+    if (allInYearGraded) {
+      const years = Object.keys(modulesByYear).sort((a, b) => parseInt(a) - parseInt(b));
+      const currentYearIndex = years.indexOf(activeTab);
+      if (currentYearIndex !== -1 && currentYearIndex < years.length - 1) {
+        const nextYear = years[currentYearIndex + 1];
+        setActiveTab(nextYear);
+      }
+    }
+  }, [modules, activeTab]);
 
   useEffect(() => {
     // Load modules from localStorage
@@ -187,11 +213,21 @@ export const SimpleGPACalculator = ({ profile, onEditProfile, onBackToHome }: Si
 
   const getGradeColorClass = (grade: string | null): string => {
     if (!grade) return 'bg-white border-gray-200/80';
-    if (grade.startsWith('A')) return 'bg-green-100/50 border-green-300';
-    if (grade.startsWith('B')) return 'bg-yellow-100/50 border-yellow-300';
-    if (grade.startsWith('C')) return 'bg-orange-100/50 border-orange-300';
-    if (grade.startsWith('D') || grade.startsWith('E')) return 'bg-red-100/50 border-red-300';
-    return 'bg-white border-gray-200/80';
+    switch (grade) {
+      case 'A+': return 'bg-green-300/50 border-green-500';
+      case 'A': return 'bg-green-200/50 border-green-400';
+      case 'A-': return 'bg-green-100/50 border-green-300';
+      case 'B+': return 'bg-lime-300/50 border-lime-500';
+      case 'B': return 'bg-lime-200/50 border-lime-400';
+      case 'B-': return 'bg-lime-100/50 border-lime-300';
+      case 'C+': return 'bg-yellow-200/50 border-yellow-400';
+      case 'C': return 'bg-yellow-100/50 border-yellow-300';
+      case 'C-': return 'bg-orange-200/50 border-orange-400';
+      case 'D+': return 'bg-orange-300/50 border-orange-500';
+      case 'D': return 'bg-red-200/50 border-red-400';
+      case 'E': return 'bg-red-300/50 border-red-500';
+      default: return 'bg-white border-gray-200/80';
+    }
   };
 
   return (
@@ -226,25 +262,23 @@ export const SimpleGPACalculator = ({ profile, onEditProfile, onBackToHome }: Si
 
         {/* Dean's List Celebration */}
         {showCelebration && (
-          <div className="fixed inset-0 bg-black bg-opacity-20 flex items-center justify-center z-50 animate-in fade-in duration-200">
-            <div className="bg-white rounded-lg p-6 max-w-sm mx-4 text-center shadow-lg animate-in zoom-in-95 duration-300 relative">
+          <div className="fixed bottom-6 right-6 z-50">
+            <div className="bg-white rounded-lg p-4 max-w-xs text-center shadow-lg animate-in fade-in duration-300 slide-in-from-bottom-4">
               <button 
                 onClick={() => setShowCelebration(false)}
-                className="absolute top-2 right-2 text-gray-400 hover:text-gray-600 transition-colors"
+                className="absolute top-1 right-1 text-gray-400 hover:text-gray-600 transition-colors"
               >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
-              <div className="flex justify-center mb-3">
-                <Trophy className="h-8 w-8 text-yellow-500" />
+              <div className="flex items-center space-x-3">
+                <Trophy className="h-6 w-6 text-yellow-500" />
+                <div>
+                  <h3 className="text-sm font-semibold text-gray-900">Congratulations!</h3>
+                  <p className="text-xs text-gray-600">You're on the Dean's List!</p>
+                </div>
               </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                🎉 Congratulations!
-              </h3>
-              <p className="text-sm text-gray-600">
-                You've been selected for the Dean's List!
-              </p>
             </div>
           </div>
         )}
@@ -264,7 +298,7 @@ export const SimpleGPACalculator = ({ profile, onEditProfile, onBackToHome }: Si
         </Card>
 
         {/* Modules Section */}
-        <Tabs defaultValue={profile.currentYear.toString()} className="w-full">
+        <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
           <TabsList className="grid w-full grid-cols-4 bg-gray-100 rounded-full h-12 p-1">
             {Object.keys(groupModulesByYearAndSemester()).map(year => (
               <TabsTrigger key={year} value={year} className="rounded-full text-base data-[state=active]:bg-white data-[state=active]:shadow-md">Year {year}</TabsTrigger>
