@@ -50,6 +50,7 @@ export const ProfileSetup = ({ onProfileComplete, onBack }: ProfileSetupProps) =
         return;
       }
       localStorage.removeItem('gpaModules');
+      localStorage.removeItem('gpaActiveTab');
       onProfileComplete(formData);
     }
   };

@@ -260,7 +260,7 @@ export const GPACalculator = () => {
       const savedProfile = localStorage.getItem('gpa_profile');
       if (savedProfile) {
         const profileData = JSON.parse(savedProfile);
-        setProfile(profileData);
+      setProfile(profileData);
       } else {
         // Default profile
         const defaultProfile: Profile = {
@@ -343,31 +343,31 @@ export const GPACalculator = () => {
 
   const calculateGPA = () => {
     const modulesWithGrades = modules.filter(module => module.grade && module.grade_points !== undefined);
-    
+
     if (modulesWithGrades.length > 0) {
       const totalWeightedPoints = modulesWithGrades.reduce((sum, module) => {
         return sum + ((module.grade_points || 0) * module.credits);
       }, 0);
       const totalCredits = modulesWithGrades.reduce((sum, module) => sum + module.credits, 0);
-      const cumulativeGPA = totalCredits > 0 ? totalWeightedPoints / totalCredits : 0;
+        const cumulativeGPA = totalCredits > 0 ? totalWeightedPoints / totalCredits : 0;
 
-      setGpaData({
-        semester_gpa: cumulativeGPA, // For simplicity, using cumulative
-        cumulative_gpa: cumulativeGPA,
-        total_credits: totalCredits,
-      });
+        setGpaData({
+          semester_gpa: cumulativeGPA, // For simplicity, using cumulative
+          cumulative_gpa: cumulativeGPA,
+          total_credits: totalCredits,
+        });
 
       // Check for Dean's List (GPA > 3.7)
       if (cumulativeGPA > 3.7 && modulesWithGrades.length >= 4) {
         setShowCelebration(true);
         setTimeout(() => setShowCelebration(false), 4000); // Hide after 4 seconds
       }
-    } else {
-      setGpaData({
-        semester_gpa: 0,
-        cumulative_gpa: 0,
-        total_credits: 0,
-      });
+      } else {
+        setGpaData({
+          semester_gpa: 0,
+          cumulative_gpa: 0,
+          total_credits: 0,
+        });
     }
   };
 
@@ -380,12 +380,12 @@ export const GPACalculator = () => {
       module.grade_points = value ? gradePoints[value] : undefined;
     } else {
       (module as any)[field] = value;
-    }
+        }
     
     setModules(updatedModules);
     localStorage.setItem('gpa_modules', JSON.stringify(updatedModules));
-    
-    // Recalculate GPA
+
+      // Recalculate GPA
     calculateGPA();
   };
 
@@ -537,12 +537,12 @@ export const GPACalculator = () => {
                     </SelectContent>
                   </Select>
                   <div className="flex gap-2">
-                    <Button onClick={handleSaveProfile} size="sm" disabled={saving}>
-                      <Save className="h-4 w-4" />
-                    </Button>
-                    <Button onClick={handleCancelEdit} variant="outline" size="sm">
-                      <X className="h-4 w-4" />
-                    </Button>
+                  <Button onClick={handleSaveProfile} size="sm" disabled={saving}>
+                    <Save className="h-4 w-4" />
+                  </Button>
+                  <Button onClick={handleCancelEdit} variant="outline" size="sm">
+                    <X className="h-4 w-4" />
+                  </Button>
                   </div>
                 </div>
               ) : (
@@ -637,14 +637,14 @@ export const GPACalculator = () => {
                           <div className="text-sm text-gray-600">Module {module.module_number}</div>
                         </div>
                         <div className="flex items-center gap-2 w-full sm:w-auto">
-                          <Input
-                            type="number"
-                            value={module.credits}
+                        <Input
+                          type="number"
+                          value={module.credits}
                             onChange={(e) => handleModuleUpdate(moduleIndex, 'credits', parseInt(e.target.value) || 4)}
                             className="w-20"
-                            min="1"
-                            max="6"
-                          />
+                          min="1"
+                          max="6"
+                        />
                           <span className="text-sm text-gray-600 whitespace-nowrap">credits</span>
                         </div>
                         <Select

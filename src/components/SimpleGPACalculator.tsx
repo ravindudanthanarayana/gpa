@@ -73,7 +73,12 @@ export const SimpleGPACalculator = ({ profile, onEditProfile, onBackToHome }: Si
   const [modules, setModules] = useState<Module[]>([]);
   const [gpaData, setGpaData] = useState({ cumulative_gpa: 0, total_credits: 0 });
   const [showCelebration, setShowCelebration] = useState(false);
-  const [activeTab, setActiveTab] = useState(profile.currentYear.toString());
+  const [activeTab, setActiveTab] = useState(() => localStorage.getItem('gpaActiveTab') || '1');
+
+  const handleTabChange = (newTab: string) => {
+    setActiveTab(newTab);
+    localStorage.setItem('gpaActiveTab', newTab);
+  }
 
   const generateModules = useCallback(() => {
     const modules: Module[] = [];
@@ -170,7 +175,7 @@ export const SimpleGPACalculator = ({ profile, onEditProfile, onBackToHome }: Si
     localStorage.setItem('gpaModules', JSON.stringify(updatedModules));
     calculateGPA(updatedModules);
 
-    // Auto-switch tab logic moved here
+    // Auto-switch tab logic
     if (field === 'grade' && value && !moduleBeforeUpdate.grade) {
       const yearOfModule = updatedModules[moduleIndex].year;
       const modulesInYear = updatedModules.filter(m => m.year === yearOfModule);
@@ -181,7 +186,7 @@ export const SimpleGPACalculator = ({ profile, onEditProfile, onBackToHome }: Si
         const currentYearIndex = yearsWithModules.indexOf(yearOfModule);
         if (currentYearIndex !== -1 && currentYearIndex < yearsWithModules.length - 1) {
           const nextYear = yearsWithModules[currentYearIndex + 1];
-          setActiveTab(nextYear.toString());
+          handleTabChange(nextYear.toString()); // Use handleTabChange to also save state
         }
       }
     }
@@ -233,7 +238,7 @@ export const SimpleGPACalculator = ({ profile, onEditProfile, onBackToHome }: Si
               GPA Calculator
             </h1>
             <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6 text-gray-600">
-              <span className="text-lg sm:text-xl truncate">
+              <span className="text-lg sm:text-xl">
                 {profile.degreeProgram}
                 {profile.specialization && ` - ${profile.specialization}`}
               </span>
@@ -291,7 +296,7 @@ export const SimpleGPACalculator = ({ profile, onEditProfile, onBackToHome }: Si
         </Card>
 
         {/* Modules Section */}
-        <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
+        <Tabs value={activeTab} onValueChange={handleTabChange} className="w-full">
           <TabsList className="grid w-full grid-cols-4 bg-gray-100 rounded-full h-12 p-1">
             {Object.keys(groupModulesByYearAndSemester()).map(year => (
               <TabsTrigger key={year} value={year} className="rounded-full text-base data-[state=active]:bg-white data-[state=active]:shadow-md">Year {year}</TabsTrigger>

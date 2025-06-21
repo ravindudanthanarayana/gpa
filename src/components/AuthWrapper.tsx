@@ -20,7 +20,7 @@ export const AuthWrapper = ({ children }: AuthWrapperProps) => {
     if (savedUser) {
       setUser(JSON.parse(savedUser));
     }
-    setLoading(false);
+      setLoading(false);
   }, []);
 
   const handleLogin = (userData: User) => {

@@ -37,6 +37,7 @@ export const GPAApp = () => {
     setProfile(null);
     localStorage.removeItem('gpaProfile');
     localStorage.removeItem('gpaModules');
+    localStorage.removeItem('gpaActiveTab');
   };
 
   const handleBackToHome = () => {
@@ -44,6 +45,7 @@ export const GPAApp = () => {
     setProfile(null);
     localStorage.removeItem('gpaProfile');
     localStorage.removeItem('gpaModules');
+    localStorage.removeItem('gpaActiveTab');
   };
 
   // Show landing page
