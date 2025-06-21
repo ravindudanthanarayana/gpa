@@ -100,9 +100,9 @@ export const ProfileSetup = ({ onProfileComplete, onBack }: ProfileSetupProps) =
                   <SelectTrigger className="h-12 sm:h-16 border-gray-200 rounded-xl text-base sm:text-xl bg-gray-50 hover:bg-gray-100 transition-colors touch-manipulation">
                     <SelectValue placeholder="Select your degree program" />
                   </SelectTrigger>
-                  <SelectContent className="rounded-xl border-gray-200 max-h-60">
+                  <SelectContent className="rounded-xl border-gray-200 max-h-60 w-[calc(100vw-3rem)] sm:w-auto">
                     {degreePrograms.map((program) => (
-                      <SelectItem key={program} value={program} className="text-sm sm:text-xl py-3 sm:py-4">
+                      <SelectItem key={program} value={program} className="text-sm sm:text-xl py-3 sm:py-4 whitespace-normal break-words">
                         {program}
                       </SelectItem>
                     ))}
@@ -122,7 +122,7 @@ export const ProfileSetup = ({ onProfileComplete, onBack }: ProfileSetupProps) =
                     <SelectTrigger className="h-12 sm:h-16 border-gray-200 rounded-xl text-base sm:text-xl bg-gray-50 hover:bg-gray-100 transition-colors touch-manipulation">
                       <SelectValue placeholder="Select your specialization" />
                     </SelectTrigger>
-                    <SelectContent className="rounded-xl border-gray-200">
+                    <SelectContent className="rounded-xl border-gray-200 w-[calc(100vw-3rem)] sm:w-auto">
                       {specializations.map((spec) => (
                         <SelectItem key={spec} value={spec} className="text-sm sm:text-xl py-3 sm:py-4">
                           {spec}
@@ -145,7 +145,7 @@ export const ProfileSetup = ({ onProfileComplete, onBack }: ProfileSetupProps) =
                     <SelectTrigger className="h-12 sm:h-16 border-gray-200 rounded-xl text-base sm:text-xl bg-gray-50 hover:bg-gray-100 transition-colors touch-manipulation">
                       <SelectValue />
                     </SelectTrigger>
-                    <SelectContent className="rounded-xl border-gray-200">
+                    <SelectContent className="rounded-xl border-gray-200 w-[calc(100vw-3rem)] sm:w-auto">
                       {[1, 2, 3, 4].map((year) => (
                         <SelectItem key={year} value={year.toString()} className="text-sm sm:text-xl py-3 sm:py-4">
                           Year {year}
@@ -166,7 +166,7 @@ export const ProfileSetup = ({ onProfileComplete, onBack }: ProfileSetupProps) =
                     <SelectTrigger className="h-12 sm:h-16 border-gray-200 rounded-xl text-base sm:text-xl bg-gray-50 hover:bg-gray-100 transition-colors touch-manipulation">
                       <SelectValue />
                     </SelectTrigger>
-                    <SelectContent className="rounded-xl border-gray-200">
+                    <SelectContent className="rounded-xl border-gray-200 w-[calc(100vw-3rem)] sm:w-auto">
                       <SelectItem value="1" className="text-sm sm:text-xl py-3 sm:py-4">Semester 1</SelectItem>
                       <SelectItem value="2" className="text-sm sm:text-xl py-3 sm:py-4">Semester 2</SelectItem>
                     </SelectContent>
