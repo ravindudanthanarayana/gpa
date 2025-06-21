@@ -13,13 +13,7 @@ export const LandingPage = ({ onGetStarted }: LandingPageProps) => {
         {/* Navigation */}
         <nav className="w-full px-6 sm:px-8 py-6">
           <div className="max-w-6xl mx-auto flex items-center justify-start">
-            <div className="flex items-center space-x-4">
-              <img 
-                src="/lovable-uploads/680455e5-c000-4aed-bc7e-4ca59054a3e6.png" 
-                alt="SLIIT Logo" 
-                className="h-10 w-8 sm:h-12 sm:w-10"
-              />
-            </div>
+            {/* Removed SLIIT logo from navigation */}
           </div>
         </nav>
 
@@ -27,6 +21,15 @@ export const LandingPage = ({ onGetStarted }: LandingPageProps) => {
         <div className="flex-1 flex items-center justify-center px-6 sm:px-8">
           <div className="max-w-4xl mx-auto text-center">
             <div className="animate-fade-in">
+              {/* SLIIT Logo in Center */}
+              <div className="flex justify-center mb-8 sm:mb-12">
+                <img 
+                  src="/lovable-uploads/680455e5-c000-4aed-bc7e-4ca59054a3e6.png" 
+                  alt="SLIIT Logo" 
+                  className="h-20 w-16 sm:h-24 sm:w-20"
+                />
+              </div>
+              
               {/* Main Headline */}
               <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-light text-gray-900 mb-8 sm:mb-12 tracking-tight leading-none">
                 GPA
