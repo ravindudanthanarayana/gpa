@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { LandingPage } from './LandingPage';
+import LandingPage from './LandingPage';
 import { ProfileSetup } from './ProfileSetup';
 import { SimpleGPACalculator } from './SimpleGPACalculator';
 

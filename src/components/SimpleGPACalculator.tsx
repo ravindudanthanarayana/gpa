@@ -229,42 +229,43 @@ export const SimpleGPACalculator = ({ profile, onEditProfile, onBackToHome }: Si
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col">
+    <main className="min-h-screen bg-gray-50 flex flex-col">
       <div className="flex-1 max-w-7xl mx-auto px-6 sm:px-8 py-8 sm:py-12">
         {/* Header */}
-        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-6 mb-12 sm:mb-16">
+        <header className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-6 mb-12 sm:mb-16">
           <div className="min-w-0 flex-1">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-light text-gray-900 mb-4 tracking-tight">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-light text-gray-900 mb-4 tracking-tight transition-all duration-300">
               GPA Calculator
             </h1>
             <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6 text-gray-600">
-              <span className="text-lg sm:text-xl">
+              <span className="text-lg sm:text-xl transition-all duration-300">
                 {profile.degreeProgram}
                 {profile.specialization && ` - ${profile.specialization}`}
               </span>
               <span className="hidden sm:inline">•</span>
-              <span className="text-base sm:text-lg">Year {profile.currentYear}, Semester {profile.currentSemester}</span>
-              <Button onClick={onEditProfile} variant="outline" size="sm" className="rounded-full border-gray-300 w-fit touch-manipulation">
+              <span className="text-base sm:text-lg transition-all duration-300">Year {profile.currentYear}, Semester {profile.currentSemester}</span>
+              <Button onClick={onEditProfile} variant="outline" size="sm" className="rounded-full border-gray-300 w-fit touch-manipulation transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-md" aria-label="Edit profile settings">
                 <Edit2 className="h-4 w-4 mr-2" />
                 Edit
               </Button>
             </div>
           </div>
           <div className="flex gap-3 sm:gap-4 flex-shrink-0">
-            <Button onClick={onBackToHome} variant="outline" className="rounded-full border-gray-300 text-gray-600 flex-1 sm:flex-none touch-manipulation">
+            <Button onClick={onBackToHome} variant="outline" className="rounded-full border-gray-300 text-gray-600 flex-1 sm:flex-none touch-manipulation transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-md" aria-label="Go back to home page">
               <ArrowLeft className="h-4 w-4 mr-2" />
               Home
             </Button>
           </div>
-        </div>
+        </header>
 
         {/* Dean's List Celebration */}
         {showCelebration && (
-          <div className="fixed bottom-6 right-6 z-50">
+          <div className="fixed bottom-6 right-6 z-50" role="alert" aria-live="polite">
             <div className="bg-white rounded-lg p-4 max-w-xs text-center shadow-lg animate-in fade-in duration-300 slide-in-from-bottom-4">
               <button 
                 onClick={() => setShowCelebration(false)}
                 className="absolute top-1 right-1 text-gray-400 hover:text-gray-600 transition-colors"
+                aria-label="Close celebration message"
               >
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -282,76 +283,97 @@ export const SimpleGPACalculator = ({ profile, onEditProfile, onBackToHome }: Si
         )}
 
         {/* GPA Summary */}
-        <Card className="mb-12 sm:mb-16 border-0 shadow-lg rounded-3xl sm:rounded-[2rem] overflow-hidden bg-white">
-          <CardContent className="p-8 sm:p-12">
-            <div className="flex justify-center">
-              <div className="text-center">
-                <div className="text-5xl sm:text-6xl font-normal text-blue-600 mb-3 tracking-tight">
-                  {gpaData.cumulative_gpa.toFixed(2)}
+        <section>
+          <Card className="mb-12 sm:mb-16 border-0 shadow-lg rounded-3xl sm:rounded-[2rem] overflow-hidden bg-white transition-all duration-500 ease-in-out hover:shadow-xl">
+            <CardContent className="p-8 sm:p-12">
+              <div className="flex justify-center">
+                <div className="text-center transition-all duration-300 ease-in-out">
+                  <div className="text-5xl sm:text-6xl font-normal text-blue-600 mb-3 tracking-tight transition-all duration-500 ease-in-out" aria-label={`Cumulative GPA: ${gpaData.cumulative_gpa.toFixed(2)}`}>
+                    {gpaData.cumulative_gpa.toFixed(2)}
+                  </div>
+                  <div className="text-gray-500 text-lg transition-all duration-300">Cumulative GPA</div>
                 </div>
-                <div className="text-gray-500 text-lg">Cumulative GPA</div>
               </div>
-            </div>
-          </CardContent>
-        </Card>
+            </CardContent>
+          </Card>
+        </section>
 
         {/* Modules Section */}
-        <Tabs value={activeTab} onValueChange={handleTabChange} className="w-full">
-          <TabsList className="grid w-full grid-cols-4 bg-gray-100 rounded-full h-12 p-1">
-            {Object.keys(groupModulesByYearAndSemester()).map(year => (
-              <TabsTrigger key={year} value={year} className="rounded-full text-base data-[state=active]:bg-white data-[state=active]:shadow-md">Year {year}</TabsTrigger>
-            ))}
-          </TabsList>
-
-          {Object.entries(groupModulesByYearAndSemester()).map(([year, semesters]) => (
-            <TabsContent key={year} value={year} className="space-y-10 mt-6">
-              {Object.entries(semesters).map(([semester, semesterModules]) => (
-                <div key={semester}>
-                  <h3 className="text-lg font-medium text-gray-500 mb-4 pl-2">Semester {semester}</h3>
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    {semesterModules.map((module) => {
-                      const globalIndex = modules.findIndex(m => m.id === module.id);
-                      
-                      return (
-                        <div key={module.id} className={`p-3 rounded-xl border space-y-2 transition-all hover:shadow-lg hover:border-blue-300 ${getGradeColorClass(module.grade)}`}>
-                          <div className="text-center font-semibold text-gray-700 text-xs truncate">
-                            {module.module_name}
-                          </div>
-                          
-                          <Input
-                            type="number"
-                            placeholder="Credits"
-                            value={module.credits}
-                            onChange={(e) => handleModuleUpdate(globalIndex, 'credits', parseInt(e.target.value) || 4)}
-                            min="1"
-                            max="6"
-                            className="border-gray-200 rounded-lg bg-gray-50/80 h-9 text-xs touch-manipulation text-center focus:bg-white"
-                          />
-                          
-                          <Select
-                            value={module.grade || ''}
-                            onValueChange={(value) => handleModuleUpdate(globalIndex, 'grade', value)}
-                          >
-                            <SelectTrigger className={`rounded-lg transition-colors h-9 text-xs touch-manipulation ${module.grade ? 'border-blue-300 bg-blue-50 text-blue-700 font-semibold' : 'border-gray-200 bg-gray-50/80'}`}>
-                              <SelectValue placeholder="Grade" />
-                            </SelectTrigger>
-                            <SelectContent className="rounded-lg border-gray-200">
-                              {grades.map((grade) => (
-                                <SelectItem key={grade} value={grade} className="py-1 text-xs">
-                                  {grade} ({gradePoints[grade]})
-                                </SelectItem>
-                              ))}
-                            </SelectContent>
-                          </Select>
-                        </div>
-                      );
-                    })}
-                  </div>
-                </div>
+        <section>
+          <Tabs value={activeTab} onValueChange={handleTabChange} className="w-full">
+            <TabsList className="grid w-full grid-cols-4 bg-gray-100 rounded-full h-12 p-1 transition-all duration-300" role="tablist">
+              {Object.keys(groupModulesByYearAndSemester()).map(year => (
+                <TabsTrigger 
+                  key={year} 
+                  value={year} 
+                  className="rounded-full text-base data-[state=active]:bg-white data-[state=active]:shadow-md transition-all duration-300 ease-in-out hover:bg-gray-50" 
+                  role="tab"
+                >
+                  Year {year}
+                </TabsTrigger>
               ))}
-            </TabsContent>
-          ))}
-        </Tabs>
+            </TabsList>
+
+            {Object.entries(groupModulesByYearAndSemester()).map(([year, semesters]) => (
+              <TabsContent 
+                key={year} 
+                value={year} 
+                className="space-y-10 mt-6 transition-all duration-500 ease-in-out" 
+                role="tabpanel"
+              >
+                {Object.entries(semesters).map(([semester, semesterModules]) => (
+                  <div key={semester} className="animate-in fade-in-0 slide-in-from-bottom-4 duration-500">
+                    <h3 className="text-lg font-medium text-gray-500 mb-4 pl-2">Semester {semester}</h3>
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                      {semesterModules.map((module, index) => {
+                        const globalIndex = modules.findIndex(m => m.id === module.id);
+                        
+                        return (
+                          <article 
+                            key={module.id} 
+                            className={`p-3 rounded-xl border space-y-2 transition-all duration-300 ease-in-out hover:shadow-lg hover:border-blue-300 hover:scale-105 ${getGradeColorClass(module.grade)}`}
+                            style={{ animationDelay: `${index * 50}ms` }}
+                          >
+                            <div className="text-center font-semibold text-gray-700 text-xs truncate">
+                              {module.module_name}
+                            </div>
+                            
+                            <Input
+                              type="number"
+                              placeholder="Credits"
+                              value={module.credits}
+                              onChange={(e) => handleModuleUpdate(globalIndex, 'credits', parseInt(e.target.value) || 4)}
+                              min="1"
+                              max="6"
+                              className="border-gray-200 rounded-lg bg-gray-50/80 h-9 text-xs touch-manipulation text-center focus:bg-white transition-all duration-200"
+                              aria-label={`Credits for ${module.module_name}`}
+                            />
+                            
+                            <Select
+                              value={module.grade || ''}
+                              onValueChange={(value) => handleModuleUpdate(globalIndex, 'grade', value)}
+                            >
+                              <SelectTrigger className={`rounded-lg transition-all duration-200 h-9 text-xs touch-manipulation ${module.grade ? 'border-blue-300 bg-blue-50 text-blue-700 font-semibold' : 'border-gray-200 bg-gray-50/80'}`}>
+                                <SelectValue placeholder="Grade" />
+                              </SelectTrigger>
+                              <SelectContent className="rounded-lg border-gray-200">
+                                {grades.map((grade) => (
+                                  <SelectItem key={grade} value={grade} className="py-1 text-xs">
+                                    {grade} ({gradePoints[grade]})
+                                  </SelectItem>
+                                ))}
+                              </SelectContent>
+                            </Select>
+                          </article>
+                        );
+                      })}
+                    </div>
+                  </div>
+                ))}
+              </TabsContent>
+            ))}
+          </Tabs>
+        </section>
       </div>
       
       {/* Footer */}
@@ -360,6 +382,6 @@ export const SimpleGPACalculator = ({ profile, onEditProfile, onBackToHome }: Si
           Developed by Ravindu Danthanarayana
         </a>
       </footer>
-    </div>
+    </main>
   );
 };
