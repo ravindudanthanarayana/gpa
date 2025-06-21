@@ -139,30 +139,6 @@ export const SimpleGPACalculator = ({ profile, onEditProfile, onBackToHome }: Si
     }
   }, [modules]);
 
-  // Effect for auto-switching tabs
-  useEffect(() => {
-    if (!modules.length) return;
-
-    const modulesByYear = modules.reduce((acc, module) => {
-      (acc[module.year] = acc[module.year] || []).push(module);
-      return acc;
-    }, {} as Record<string, Module[]>);
-
-    const currentYearModules = modulesByYear[activeTab];
-    if (!currentYearModules || currentYearModules.length === 0) return;
-
-    const allInYearGraded = currentYearModules.every(m => m.grade);
-
-    if (allInYearGraded) {
-      const years = Object.keys(modulesByYear).sort((a, b) => parseInt(a) - parseInt(b));
-      const currentYearIndex = years.indexOf(activeTab);
-      if (currentYearIndex !== -1 && currentYearIndex < years.length - 1) {
-        const nextYear = years[currentYearIndex + 1];
-        setActiveTab(nextYear);
-      }
-    }
-  }, [modules, activeTab]);
-
   useEffect(() => {
     // Load modules from localStorage
     const savedModules = localStorage.getItem('gpaModules');
@@ -183,6 +159,7 @@ export const SimpleGPACalculator = ({ profile, onEditProfile, onBackToHome }: Si
 
   const handleModuleUpdate = (moduleIndex: number, field: keyof Module, value: string | number) => {
     const updatedModules = [...modules];
+    const moduleBeforeUpdate = { ...updatedModules[moduleIndex] };
     updatedModules[moduleIndex] = { ...updatedModules[moduleIndex], [field]: value };
     
     if (field === 'grade') {
@@ -192,6 +169,22 @@ export const SimpleGPACalculator = ({ profile, onEditProfile, onBackToHome }: Si
     setModules(updatedModules);
     localStorage.setItem('gpaModules', JSON.stringify(updatedModules));
     calculateGPA(updatedModules);
+
+    // Auto-switch tab logic moved here
+    if (field === 'grade' && value && !moduleBeforeUpdate.grade) {
+      const yearOfModule = updatedModules[moduleIndex].year;
+      const modulesInYear = updatedModules.filter(m => m.year === yearOfModule);
+      const allInYearGraded = modulesInYear.every(m => m.grade);
+
+      if (allInYearGraded) {
+        const yearsWithModules = [...new Set(updatedModules.map(m => m.year))].sort((a,b) => a - b);
+        const currentYearIndex = yearsWithModules.indexOf(yearOfModule);
+        if (currentYearIndex !== -1 && currentYearIndex < yearsWithModules.length - 1) {
+          const nextYear = yearsWithModules[currentYearIndex + 1];
+          setActiveTab(nextYear.toString());
+        }
+      }
+    }
   };
 
   const groupModulesByYearAndSemester = () => {
