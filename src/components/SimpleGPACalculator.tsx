@@ -229,8 +229,8 @@ export const SimpleGPACalculator = ({ profile, onEditProfile, onBackToHome }: Si
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 py-8 sm:py-12">
+    <div className="min-h-screen bg-gray-50 flex flex-col">
+      <div className="flex-1 max-w-7xl mx-auto px-6 sm:px-8 py-8 sm:py-12">
         {/* Header */}
         <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-6 mb-12 sm:mb-16">
           <div className="min-w-0 flex-1">
@@ -353,6 +353,13 @@ export const SimpleGPACalculator = ({ profile, onEditProfile, onBackToHome }: Si
           ))}
         </Tabs>
       </div>
+      
+      {/* Footer */}
+      <footer className="text-center py-4 text-sm text-gray-500 mt-auto">
+        <a href="https://www.linkedin.com/in/ravindudanthanarayana/" target="_blank" rel="noopener noreferrer" className="hover:text-blue-600 transition-colors">
+          Developed by Ravindu Danthanarayana
+        </a>
+      </footer>
     </div>
   );
 };
