@@ -11,7 +11,7 @@ export const LandingPage = ({ onGetStarted }: LandingPageProps) => {
       {/* Apple-style hero section */}
       <div className="relative z-10 h-screen flex flex-col">
         {/* Navigation */}
-        <nav className="w-full px-6 sm:px-8 py-2 sm:py-6">
+        <nav className="w-full px-6 sm:px-8 py-1 sm:py-6">
           <div className="max-w-6xl mx-auto flex items-center justify-start">
             {/* Removed SLIIT logo from navigation */}
           </div>
