@@ -90,19 +90,19 @@ export const ProfileSetup = ({ onProfileComplete, onBack }: ProfileSetupProps) =
           <CardContent className="p-8 sm:p-12 lg:p-16">
             <form onSubmit={handleSubmit} className="space-y-8 sm:space-y-10">
               <div className="space-y-4">
-                <Label htmlFor="degree" className="text-lg sm:text-xl font-medium text-gray-900">
+                <Label htmlFor="degree" className="text-base sm:text-xl font-medium text-gray-900">
                   Degree Program
                 </Label>
                 <Select
                   value={formData.degreeProgram}
                   onValueChange={(value) => setFormData({ ...formData, degreeProgram: value, specialization: '' })}
                 >
-                  <SelectTrigger className="h-14 sm:h-16 border-gray-200 rounded-xl text-lg sm:text-xl bg-gray-50 hover:bg-gray-100 transition-colors touch-manipulation">
+                  <SelectTrigger className="h-12 sm:h-16 border-gray-200 rounded-xl text-base sm:text-xl bg-gray-50 hover:bg-gray-100 transition-colors touch-manipulation">
                     <SelectValue placeholder="Select your degree program" />
                   </SelectTrigger>
-                  <SelectContent className="rounded-xl border-gray-200">
+                  <SelectContent className="rounded-xl border-gray-200 max-h-60">
                     {degreePrograms.map((program) => (
-                      <SelectItem key={program} value={program} className="text-lg sm:text-xl py-4">
+                      <SelectItem key={program} value={program} className="text-sm sm:text-xl py-3 sm:py-4">
                         {program}
                       </SelectItem>
                     ))}
@@ -112,19 +112,19 @@ export const ProfileSetup = ({ onProfileComplete, onBack }: ProfileSetupProps) =
 
               {showSpecialization && (
                 <div className="space-y-4">
-                  <Label htmlFor="specialization" className="text-lg sm:text-xl font-medium text-gray-900">
+                  <Label htmlFor="specialization" className="text-base sm:text-xl font-medium text-gray-900">
                     Specialization
                   </Label>
                   <Select
                     value={formData.specialization}
                     onValueChange={(value) => setFormData({ ...formData, specialization: value })}
                   >
-                    <SelectTrigger className="h-14 sm:h-16 border-gray-200 rounded-xl text-lg sm:text-xl bg-gray-50 hover:bg-gray-100 transition-colors touch-manipulation">
+                    <SelectTrigger className="h-12 sm:h-16 border-gray-200 rounded-xl text-base sm:text-xl bg-gray-50 hover:bg-gray-100 transition-colors touch-manipulation">
                       <SelectValue placeholder="Select your specialization" />
                     </SelectTrigger>
                     <SelectContent className="rounded-xl border-gray-200">
                       {specializations.map((spec) => (
-                        <SelectItem key={spec} value={spec} className="text-lg sm:text-xl py-4">
+                        <SelectItem key={spec} value={spec} className="text-sm sm:text-xl py-3 sm:py-4">
                           {spec}
                         </SelectItem>
                       ))}
@@ -135,19 +135,19 @@ export const ProfileSetup = ({ onProfileComplete, onBack }: ProfileSetupProps) =
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
                 <div className="space-y-4">
-                  <Label htmlFor="year" className="text-lg sm:text-xl font-medium text-gray-900">
+                  <Label htmlFor="year" className="text-base sm:text-xl font-medium text-gray-900">
                     Current Year
                   </Label>
                   <Select
                     value={formData.currentYear.toString()}
                     onValueChange={(value) => setFormData({ ...formData, currentYear: parseInt(value) })}
                   >
-                    <SelectTrigger className="h-14 sm:h-16 border-gray-200 rounded-xl text-lg sm:text-xl bg-gray-50 hover:bg-gray-100 transition-colors touch-manipulation">
+                    <SelectTrigger className="h-12 sm:h-16 border-gray-200 rounded-xl text-base sm:text-xl bg-gray-50 hover:bg-gray-100 transition-colors touch-manipulation">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent className="rounded-xl border-gray-200">
                       {[1, 2, 3, 4].map((year) => (
-                        <SelectItem key={year} value={year.toString()} className="text-lg sm:text-xl py-4">
+                        <SelectItem key={year} value={year.toString()} className="text-sm sm:text-xl py-3 sm:py-4">
                           Year {year}
                         </SelectItem>
                       ))}
@@ -156,19 +156,19 @@ export const ProfileSetup = ({ onProfileComplete, onBack }: ProfileSetupProps) =
                 </div>
 
                 <div className="space-y-4">
-                  <Label htmlFor="semester" className="text-lg sm:text-xl font-medium text-gray-900">
+                  <Label htmlFor="semester" className="text-base sm:text-xl font-medium text-gray-900">
                     Current Semester
                   </Label>
                   <Select
                     value={formData.currentSemester.toString()}
                     onValueChange={(value) => setFormData({ ...formData, currentSemester: parseInt(value) })}
                   >
-                    <SelectTrigger className="h-14 sm:h-16 border-gray-200 rounded-xl text-lg sm:text-xl bg-gray-50 hover:bg-gray-100 transition-colors touch-manipulation">
+                    <SelectTrigger className="h-12 sm:h-16 border-gray-200 rounded-xl text-base sm:text-xl bg-gray-50 hover:bg-gray-100 transition-colors touch-manipulation">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent className="rounded-xl border-gray-200">
-                      <SelectItem value="1" className="text-lg sm:text-xl py-4">Semester 1</SelectItem>
-                      <SelectItem value="2" className="text-lg sm:text-xl py-4">Semester 2</SelectItem>
+                      <SelectItem value="1" className="text-sm sm:text-xl py-3 sm:py-4">Semester 1</SelectItem>
+                      <SelectItem value="2" className="text-sm sm:text-xl py-3 sm:py-4">Semester 2</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
