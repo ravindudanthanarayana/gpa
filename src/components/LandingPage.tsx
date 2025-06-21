@@ -63,7 +63,7 @@ export const LandingPage = ({ onGetStarted }: LandingPageProps) => {
         </div>
 
         {/* Bottom spacing */}
-        <div className="h-8 sm:h-16"></div>
+        <div className="h-4 sm:h-16"></div>
       </div>
 
       {/* Subtle background elements */}
