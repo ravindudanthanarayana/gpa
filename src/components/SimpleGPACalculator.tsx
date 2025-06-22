@@ -234,24 +234,24 @@ export const SimpleGPACalculator = ({ profile, onEditProfile, onBackToHome }: Si
         {/* Header */}
         <header className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-6 mb-12 sm:mb-16">
           <div className="min-w-0 flex-1">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-light text-gray-900 mb-4 tracking-tight transition-all duration-300">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-light text-gray-900 mb-4 tracking-tight">
               GPA Calculator
             </h1>
             <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6 text-gray-600">
-              <span className="text-lg sm:text-xl transition-all duration-300">
+              <span className="text-lg sm:text-xl">
                 {profile.degreeProgram}
                 {profile.specialization && ` - ${profile.specialization}`}
               </span>
               <span className="hidden sm:inline">•</span>
-              <span className="text-base sm:text-lg transition-all duration-300">Year {profile.currentYear}, Semester {profile.currentSemester}</span>
-              <Button onClick={onEditProfile} variant="outline" size="sm" className="rounded-full border-gray-300 w-fit touch-manipulation transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-md" aria-label="Edit profile settings">
+              <span className="text-base sm:text-lg">Year {profile.currentYear}, Semester {profile.currentSemester}</span>
+              <Button onClick={onEditProfile} variant="outline" size="sm" className="rounded-full border-gray-300 w-fit touch-manipulation" aria-label="Edit profile settings">
                 <Edit2 className="h-4 w-4 mr-2" />
                 Edit
               </Button>
             </div>
           </div>
           <div className="flex gap-3 sm:gap-4 flex-shrink-0">
-            <Button onClick={onBackToHome} variant="outline" className="rounded-full border-gray-300 text-gray-600 flex-1 sm:flex-none touch-manipulation transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-md" aria-label="Go back to home page">
+            <Button onClick={onBackToHome} variant="outline" className="rounded-full border-gray-300 text-gray-600 flex-1 sm:flex-none touch-manipulation" aria-label="Go back to home page">
               <ArrowLeft className="h-4 w-4 mr-2" />
               Home
             </Button>
@@ -278,100 +278,86 @@ export const SimpleGPACalculator = ({ profile, onEditProfile, onBackToHome }: Si
                   <p className="text-xs text-gray-600">You're on the Dean's List!</p>
                 </div>
               </div>
-            </div>
           </div>
+        </div>
         )}
 
         {/* GPA Summary */}
         <section>
-          <Card className="mb-12 sm:mb-16 border-0 shadow-lg rounded-3xl sm:rounded-[2rem] overflow-hidden bg-white transition-all duration-500 ease-in-out hover:shadow-xl">
+        <Card className="mb-12 sm:mb-16 border-0 shadow-lg rounded-3xl sm:rounded-[2rem] overflow-hidden bg-white">
             <CardContent className="p-8 sm:p-12">
               <div className="flex justify-center">
-                <div className="text-center transition-all duration-300 ease-in-out">
-                  <div className="text-5xl sm:text-6xl font-normal text-blue-600 mb-3 tracking-tight transition-all duration-500 ease-in-out" aria-label={`Cumulative GPA: ${gpaData.cumulative_gpa.toFixed(2)}`}>
-                    {gpaData.cumulative_gpa.toFixed(2)}
-                  </div>
-                  <div className="text-gray-500 text-lg transition-all duration-300">Cumulative GPA</div>
+              <div className="text-center">
+                  <div className="text-5xl sm:text-6xl font-normal text-blue-600 mb-3 tracking-tight" aria-label={`Cumulative GPA: ${gpaData.cumulative_gpa.toFixed(2)}`}>
+                  {gpaData.cumulative_gpa.toFixed(2)}
                 </div>
+                  <div className="text-gray-500 text-lg">Cumulative GPA</div>
               </div>
-            </CardContent>
-          </Card>
+            </div>
+          </CardContent>
+        </Card>
         </section>
 
         {/* Modules Section */}
         <section>
           <Tabs value={activeTab} onValueChange={handleTabChange} className="w-full">
-            <TabsList className="grid w-full grid-cols-4 bg-gray-100 rounded-full h-12 p-1 transition-all duration-300" role="tablist">
+            <TabsList className="grid w-full grid-cols-4 bg-gray-100 rounded-full h-12 p-1" role="tablist">
               {Object.keys(groupModulesByYearAndSemester()).map(year => (
-                <TabsTrigger 
-                  key={year} 
-                  value={year} 
-                  className="rounded-full text-base data-[state=active]:bg-white data-[state=active]:shadow-md transition-all duration-300 ease-in-out hover:bg-gray-50" 
-                  role="tab"
-                >
+                <TabsTrigger key={year} value={year} className="rounded-full text-base data-[state=active]:bg-white data-[state=active]:shadow-md" role="tab">
                   Year {year}
                 </TabsTrigger>
               ))}
             </TabsList>
 
             {Object.entries(groupModulesByYearAndSemester()).map(([year, semesters]) => (
-              <TabsContent 
-                key={year} 
-                value={year} 
-                className="space-y-10 mt-6 transition-all duration-500 ease-in-out" 
-                role="tabpanel"
-              >
+              <TabsContent key={year} value={year} className="space-y-10 mt-6" role="tabpanel">
                 {Object.entries(semesters).map(([semester, semesterModules]) => (
-                  <div key={semester} className="animate-in fade-in-0 slide-in-from-bottom-4 duration-500">
+                  <div key={semester}>
                     <h3 className="text-lg font-medium text-gray-500 mb-4 pl-2">Semester {semester}</h3>
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                      {semesterModules.map((module, index) => {
-                        const globalIndex = modules.findIndex(m => m.id === module.id);
-                        
-                        return (
-                          <article 
-                            key={module.id} 
-                            className={`p-3 rounded-xl border space-y-2 transition-all duration-300 ease-in-out hover:shadow-lg hover:border-blue-300 hover:scale-105 ${getGradeColorClass(module.grade)}`}
-                            style={{ animationDelay: `${index * 50}ms` }}
-                          >
+                      {semesterModules.map((module) => {
+                    const globalIndex = modules.findIndex(m => m.id === module.id);
+                    
+                    return (
+                          <article key={module.id} className={`p-3 rounded-xl border space-y-2 transition-all hover:shadow-lg hover:border-blue-300 ${getGradeColorClass(module.grade)}`}>
                             <div className="text-center font-semibold text-gray-700 text-xs truncate">
-                              {module.module_name}
-                            </div>
-                            
-                            <Input
-                              type="number"
-                              placeholder="Credits"
-                              value={module.credits}
+                          {module.module_name}
+                        </div>
+                        
+                        <Input
+                          type="number"
+                          placeholder="Credits"
+                          value={module.credits}
                               onChange={(e) => handleModuleUpdate(globalIndex, 'credits', parseInt(e.target.value) || 4)}
-                              min="1"
-                              max="6"
-                              className="border-gray-200 rounded-lg bg-gray-50/80 h-9 text-xs touch-manipulation text-center focus:bg-white transition-all duration-200"
+                          min="1"
+                          max="6"
+                              className="border-gray-200 rounded-lg bg-gray-50/80 h-9 text-xs touch-manipulation text-center focus:bg-white"
                               aria-label={`Credits for ${module.module_name}`}
-                            />
-                            
-                            <Select
-                              value={module.grade || ''}
-                              onValueChange={(value) => handleModuleUpdate(globalIndex, 'grade', value)}
-                            >
-                              <SelectTrigger className={`rounded-lg transition-all duration-200 h-9 text-xs touch-manipulation ${module.grade ? 'border-blue-300 bg-blue-50 text-blue-700 font-semibold' : 'border-gray-200 bg-gray-50/80'}`}>
+                        />
+                        
+                        <Select
+                          value={module.grade || ''}
+                          onValueChange={(value) => handleModuleUpdate(globalIndex, 'grade', value)}
+                        >
+                              <SelectTrigger className={`rounded-lg transition-colors h-9 text-xs touch-manipulation ${module.grade ? 'border-blue-300 bg-blue-50 text-blue-700 font-semibold' : 'border-gray-200 bg-gray-50/80'}`}>
                                 <SelectValue placeholder="Grade" />
-                              </SelectTrigger>
+                          </SelectTrigger>
                               <SelectContent className="rounded-lg border-gray-200">
-                                {grades.map((grade) => (
+                            {grades.map((grade) => (
                                   <SelectItem key={grade} value={grade} className="py-1 text-xs">
-                                    {grade} ({gradePoints[grade]})
-                                  </SelectItem>
-                                ))}
-                              </SelectContent>
-                            </Select>
+                                {grade} ({gradePoints[grade]})
+                              </SelectItem>
+                            ))}
+                          </SelectContent>
+                        </Select>
                           </article>
-                        );
-                      })}
-                    </div>
+                    );
+                  })}
+                </div>
                   </div>
                 ))}
               </TabsContent>
-            ))}
+          ))}
           </Tabs>
         </section>
       </div>
