@@ -58,7 +58,7 @@ export const ProfileSetup = ({ onProfileComplete, onBack }: ProfileSetupProps) =
   const showSpecialization = formData.degreeProgram === 'B.Sc. (Hons) in Information Technology';
 
   return (
-    <main className="min-h-screen bg-white">
+    <div className="bg-white">
       <div className="max-w-md mx-auto px-4 py-6">
         {/* Header */}
         <header className="mb-6">
@@ -197,6 +197,6 @@ export const ProfileSetup = ({ onProfileComplete, onBack }: ProfileSetupProps) =
           Developed by Ravindu 👨🏻‍💻
         </a>
       </footer>
-    </main>
+    </div>
   );
 };
