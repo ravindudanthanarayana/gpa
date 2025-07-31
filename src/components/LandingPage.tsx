@@ -7,11 +7,11 @@ interface LandingPageProps {
 
 export const LandingPage = ({ onGetStarted }: LandingPageProps) => {
   return (
-    <main className="h-screen h-[100dvh] bg-white relative overflow-hidden flex flex-col">
+    <main className="h-screen h-[100dvh] bg-white relative overflow-hidden">
       {/* Apple-style hero section */}
-      <div className="relative z-10 flex-1 flex flex-col overflow-hidden">
+      <div className="relative z-10 h-full flex flex-col overflow-hidden">
         {/* Hero Content */}
-        <section className="flex-1 flex items-center justify-center px-3 min-h-0">
+        <section className="flex-1 flex items-center justify-center px-3 min-h-0 pb-16">
           <div className="max-w-2xl mx-auto text-center">
             <div className="animate-fade-in">
               {/* SLIIT Logo in Center */}
@@ -64,8 +64,8 @@ export const LandingPage = ({ onGetStarted }: LandingPageProps) => {
       </div>
       
       {/* Footer */}
-      <footer className="relative z-20 text-center py-2 text-xs text-gray-500 flex-shrink-0">
-        <a href="https://www.linkedin.com/in/ravindudanthanarayana/" target="_blank" rel="noopener noreferrer" className="hover:text-blue-600 transition-colors">
+      <footer className="absolute bottom-0 left-0 right-0 z-30 text-center py-3 text-xs text-gray-500 bg-white border-t border-gray-100">
+        <a href="https://www.linkedin.com/in/ravindudanthanarayana/" target="_blank" rel="noopener noreferrer" className="hover:text-blue-600 transition-colors font-medium">
           Developed by Ravindu 👨🏻‍💻
         </a>
       </footer>
