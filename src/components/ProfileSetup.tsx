@@ -58,10 +58,10 @@ export const ProfileSetup = ({ onProfileComplete, onBack }: ProfileSetupProps) =
   const showSpecialization = formData.degreeProgram === 'B.Sc. (Hons) in Information Technology';
 
   return (
-    <main className="min-h-screen h-[100dvh] bg-white flex flex-col">
-      <div className="flex-1 max-w-md mx-auto px-4 py-6 flex flex-col">
+    <main className="min-h-screen bg-white">
+      <div className="max-w-md mx-auto px-4 py-6">
         {/* Header */}
-        <header className="mb-6 flex-shrink-0">
+        <header className="mb-6">
           <Button 
             onClick={onBack}
             variant="outline" 
@@ -88,8 +88,8 @@ export const ProfileSetup = ({ onProfileComplete, onBack }: ProfileSetupProps) =
         </header>
 
         {/* Form */}
-        <section className="flex-1 flex items-start justify-center">
-        <Card className="border-0 shadow-xl rounded-2xl overflow-hidden bg-white w-full max-w-sm">
+        <section className="mb-8">
+        <Card className="border-0 shadow-xl rounded-2xl overflow-hidden bg-white w-full max-w-sm mx-auto">
             <CardContent className="p-6">
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div className="space-y-2">
@@ -192,7 +192,7 @@ export const ProfileSetup = ({ onProfileComplete, onBack }: ProfileSetupProps) =
         </Card>
         </section>
       </div>
-      <footer className="text-center py-3 text-xs text-gray-500 flex-shrink-0 bg-white border-t border-gray-100">
+      <footer className="text-center py-3 text-xs text-gray-500 bg-white border-t border-gray-100">
         <a href="https://www.linkedin.com/in/ravindudanthanarayana/" target="_blank" rel="noopener noreferrer" className="hover:text-blue-600 transition-colors font-medium">
           Developed by Ravindu 👨🏻‍💻
         </a>
