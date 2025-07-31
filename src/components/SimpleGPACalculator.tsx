@@ -41,8 +41,8 @@ const curriculum = {
   'B.Sc. (Hons) in Information Technology - SE': {
     1: { 1: ['IP', 'MC', 'FC', 'DCN'], 2: ['OOP', 'DSA', 'TW', 'DM'] },
     2: { 1: ['PS', 'SE', 'AI', 'DDD'], 2: ['SE13', 'SE14', 'SE15', 'SE16'] },
-    3: { 1: ['Software Arch', 'DevOps', 'Testing', 'Agile'], 2: ['SE Project', 'SE Internship', 'SE Seminar', 'SE Research'] },
-    4: { 1: ['SE Capstone', 'SE Elective 1', 'SE Elective 2', 'SE Elective 3'], 2: ['SE Thesis', 'SE Elective 4', 'SE Elective 5', 'SE Elective 6'] }
+    3: { 1: ['SE17', 'SE18', 'SE19', 'SE20'], 2: ['SE21', 'SE22', 'SE23', 'SE24'] },
+    4: { 1: ['SE25', 'SE26', 'SE27', 'SE28'], 2: ['SE29', 'SE30', 'SE31', 'SE32'] }
   },
   'B.Sc. (Hons) in Information Technology - CSNE': {
     1: { 1: ['IP', 'MC', 'FC', 'DCN'], 2: ['OOP', 'DSA', 'TW', 'DM'] },
@@ -410,7 +410,7 @@ export const SimpleGPACalculator = ({ profile, onEditProfile, onBackToHome }: Si
       {/* Footer */}
       <footer className="text-center py-4 text-sm text-gray-500 mt-auto">
         <a href="https://www.linkedin.com/in/ravindudanthanarayana/" target="_blank" rel="noopener noreferrer" className="hover:text-blue-600 transition-colors">
-          Developed by Ravindu Danthanarayana
+          Developed by Ravindu 👨🏻‍💻
         </a>
       </footer>
     </main>
