@@ -11,52 +11,52 @@ export const LandingPage = ({ onGetStarted }: LandingPageProps) => {
       {/* Apple-style hero section */}
       <div className="relative z-10 h-screen flex flex-col">
         {/* Navigation */}
-        <header className="w-full px-6 sm:px-8 py-1 sm:py-6">
-          <nav className="max-w-6xl mx-auto flex items-center justify-start">
+        <header className="w-full px-4 py-2">
+          <nav className="max-w-4xl mx-auto flex items-center justify-start">
             {/* Removed SLIIT logo from navigation */}
         </nav>
         </header>
 
         {/* Hero Content */}
-        <section className="flex-1 flex items-center justify-center px-6 sm:px-8">
-          <div className="max-w-4xl mx-auto text-center">
+        <section className="flex-1 flex items-center justify-center px-4">
+          <div className="max-w-3xl mx-auto text-center">
             <div className="animate-fade-in">
               {/* SLIIT Logo in Center */}
-              <div className="flex justify-center mb-4 sm:mb-8">
+              <div className="flex justify-center mb-3">
                 <img 
                   src="/lovable-uploads/680455e5-c000-4aed-bc7e-4ca59054a3e6.png" 
                   alt="SLIIT Logo - Sri Lanka Institute of Information Technology" 
-                  className="h-14 w-10 sm:h-20 sm:w-16"
+                  className="h-12 w-8"
                 />
               </div>
               
               {/* Main Headline */}
-              <h1 className="text-3xl sm:text-7xl md:text-8xl lg:text-9xl font-light text-gray-900 mb-4 sm:mb-12 tracking-tight leading-none">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl font-light text-gray-900 mb-3 tracking-tight leading-none">
                 GPA
                 <span className="block text-blue-600 font-normal">Calculator</span>
               </h1>
               
               {/* Subtitle */}
-              <p className="text-base sm:text-2xl md:text-3xl text-gray-600 mb-8 sm:mb-20 max-w-3xl mx-auto font-light leading-relaxed">
+              <p className="text-sm sm:text-lg md:text-xl text-gray-600 mb-6 max-w-2xl mx-auto font-light leading-relaxed">
                 Calculate your GPA with precision.
                 <br className="hidden sm:block" />
                 <span className="block sm:inline"> Track your academic progress.</span>
               </p>
               
               {/* CTA Button */}
-              <div className="space-y-3 sm:space-y-6">
+              <div className="space-y-2">
                 <Button 
                   onClick={onGetStarted}
                   size="lg"
-                  className="bg-blue-600 hover:bg-blue-700 text-white px-8 sm:px-16 py-4 sm:py-8 text-lg sm:text-xl font-medium rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 border-0 w-full sm:w-auto min-h-[48px] sm:min-h-[64px] touch-manipulation"
+                  className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 text-base font-medium rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 border-0 w-full sm:w-auto min-h-[40px] touch-manipulation"
                   aria-label="Get Started with GPA Calculator"
                 >
                   Get Started
-                  <ArrowRight className="ml-3 sm:ml-4 h-5 w-5 sm:h-6 sm:w-6" />
+                  <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
                 
-                <p className="text-sm sm:text-base text-gray-500 mt-2 sm:mt-6">
-                  For Sri Lanka Institute of Information Technology students
+                <p className="text-xs sm:text-sm text-gray-500 mt-2">
+                  For SLIIT Faculty of Computing students
                 </p>
               </div>
             </div>
@@ -64,17 +64,17 @@ export const LandingPage = ({ onGetStarted }: LandingPageProps) => {
         </section>
 
         {/* Bottom spacing */}
-        <div className="h-4 sm:h-16"></div>
+        <div className="h-2"></div>
       </div>
 
       {/* Subtle background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
-        <div className="absolute top-1/4 right-0 w-64 h-64 sm:w-96 sm:h-96 bg-blue-50 rounded-full blur-3xl opacity-30"></div>
-        <div className="absolute bottom-1/4 left-0 w-64 h-64 sm:w-96 sm:h-96 bg-blue-50 rounded-full blur-3xl opacity-20"></div>
+        <div className="absolute top-1/4 right-0 w-48 h-48 sm:w-64 sm:h-64 bg-blue-50 rounded-full blur-3xl opacity-30"></div>
+        <div className="absolute bottom-1/4 left-0 w-48 h-48 sm:w-64 sm:h-64 bg-blue-50 rounded-full blur-3xl opacity-20"></div>
       </div>
-      <footer className="absolute bottom-0 w-full text-center py-2 sm:py-4 text-sm text-gray-500 z-20">
+      <footer className="absolute bottom-0 w-full text-center py-2 text-xs sm:text-sm text-gray-500 z-20">
         <a href="https://www.linkedin.com/in/ravindudanthanarayana/" target="_blank" rel="noopener noreferrer" className="hover:text-blue-600 transition-colors">
-          Developed by Ravindu Danthanarayana
+          Developed by Ravindu 👨🏻‍💻
         </a>
       </footer>
     </main>

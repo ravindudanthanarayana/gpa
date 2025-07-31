@@ -32,11 +32,53 @@ interface SimpleGPACalculatorProps {
 
 // Updated curriculum structure with new degree programs and module names
 const curriculum = {
-  'B.Sc. (Hons) in Information Technology': {
+  'B.Sc. (Hons) in Information Technology - IT': {
     1: { 1: ['IP', 'MC', 'FC', 'DCN'], 2: ['OOP', 'DSA', 'TW', 'DM'] },
     2: { 1: ['PS', 'SE', 'AI', 'DDD'], 2: ['IT13', 'IT14', 'IT15', 'IT16'] },
-    3: { 1: ['IT17', 'IT18', 'IT19', 'IT20'], 2: ['IT21', 'IT22', 'IT23', 'IT24'] },
-    4: { 1: ['IT25', 'IT26', 'IT27', 'IT28'], 2: ['IT29', 'IT30', 'IT31', 'IT32'] }
+    3: { 1: ['Web Dev', 'Mobile Dev', 'Cloud Comp', 'Cyber Sec'], 2: ['IT Project', 'IT Internship', 'IT Seminar', 'IT Research'] },
+    4: { 1: ['IT Capstone', 'IT Elective 1', 'IT Elective 2', 'IT Elective 3'], 2: ['IT Thesis', 'IT Elective 4', 'IT Elective 5', 'IT Elective 6'] }
+  },
+  'B.Sc. (Hons) in Information Technology - SE': {
+    1: { 1: ['IP', 'MC', 'FC', 'DCN'], 2: ['OOP', 'DSA', 'TW', 'DM'] },
+    2: { 1: ['PS', 'SE', 'AI', 'DDD'], 2: ['SE13', 'OS', 'CN', 'WT'] },
+    3: { 1: ['Software Arch', 'DevOps', 'Testing', 'Agile'], 2: ['SE Project', 'SE Internship', 'SE Seminar', 'SE Research'] },
+    4: { 1: ['SE Capstone', 'SE Elective 1', 'SE Elective 2', 'SE Elective 3'], 2: ['SE Thesis', 'SE Elective 4', 'SE Elective 5', 'SE Elective 6'] }
+  },
+  'B.Sc. (Hons) in Information Technology - CSNE': {
+    1: { 1: ['IP', 'MC', 'FC', 'DCN'], 2: ['OOP', 'DSA', 'TW', 'DM'] },
+    2: { 1: ['PS', 'SE', 'AI', 'DDD'], 2: ['CSNE13', 'OS', 'CN', 'WT'] },
+    3: { 1: ['Network Design', 'System Admin', 'Security', 'IoT'], 2: ['CSNE Project', 'CSNE Internship', 'CSNE Seminar', 'CSNE Research'] },
+    4: { 1: ['CSNE Capstone', 'CSNE Elective 1', 'CSNE Elective 2', 'CSNE Elective 3'], 2: ['CSNE Thesis', 'CSNE Elective 4', 'CSNE Elective 5', 'CSNE Elective 6'] }
+  },
+  'B.Sc. (Hons) in Information Technology - ISE': {
+    1: { 1: ['IP', 'MC', 'FC', 'DCN'], 2: ['OOP', 'DSA', 'TW', 'DM'] },
+    2: { 1: ['PS', 'SE', 'AI', 'DDD'], 2: ['ISE13', 'OS', 'CN', 'WT'] },
+    3: { 1: ['IS Design', 'Business Process', 'ERP', 'E-Commerce'], 2: ['ISE Project', 'ISE Internship', 'ISE Seminar', 'ISE Research'] },
+    4: { 1: ['ISE Capstone', 'ISE Elective 1', 'ISE Elective 2', 'ISE Elective 3'], 2: ['ISE Thesis', 'ISE Elective 4', 'ISE Elective 5', 'ISE Elective 6'] }
+  },
+  'B.Sc. (Hons) in Information Technology - CS': {
+    1: { 1: ['IP', 'MC', 'FC', 'DCN'], 2: ['OOP', 'DSA', 'TW', 'DM'] },
+    2: { 1: ['PS', 'SE', 'AI', 'DDD'], 2: ['CS13', 'OS', 'CN', 'WT'] },
+    3: { 1: ['Algorithms', 'Data Structures', 'Compiler Design', 'OS Design'], 2: ['CS Project', 'CS Internship', 'CS Seminar', 'CS Research'] },
+    4: { 1: ['CS Capstone', 'CS Elective 1', 'CS Elective 2', 'CS Elective 3'], 2: ['CS Thesis', 'CS Elective 4', 'CS Elective 5', 'CS Elective 6'] }
+  },
+  'B.Sc. (Hons) in Information Technology - DS': {
+    1: { 1: ['IP', 'MC', 'FC', 'DCN'], 2: ['OOP', 'DSA', 'TW', 'DM'] },
+    2: { 1: ['PS', 'SE', 'AI', 'DDD'], 2: ['DS13', 'OS', 'CN', 'WT'] },
+    3: { 1: ['Data Mining', 'Machine Learning', 'Big Data', 'Statistics'], 2: ['DS Project', 'DS Internship', 'DS Seminar', 'DS Research'] },
+    4: { 1: ['DS Capstone', 'DS Elective 1', 'DS Elective 2', 'DS Elective 3'], 2: ['DS Thesis', 'DS Elective 4', 'DS Elective 5', 'DS Elective 6'] }
+  },
+  'B.Sc. (Hons) in Information Technology - IM': {
+    1: { 1: ['IP', 'MC', 'FC', 'DCN'], 2: ['OOP', 'DSA', 'TW', 'DM'] },
+    2: { 1: ['PS', 'SE', 'AI', 'DDD'], 2: ['IM13', 'OS', 'CN', 'WT'] },
+    3: { 1: ['Info Management', 'Digital Libraries', 'Content Management', 'Knowledge Management'], 2: ['IM Project', 'IM Internship', 'IM Seminar', 'IM Research'] },
+    4: { 1: ['IM Capstone', 'IM Elective 1', 'IM Elective 2', 'IM Elective 3'], 2: ['IM Thesis', 'IM Elective 4', 'IM Elective 5', 'IM Elective 6'] }
+  },
+  'B.Sc. (Hons) in Information Technology - AI': {
+    1: { 1: ['IP', 'MC', 'FC', 'DCN'], 2: ['OOP', 'DSA', 'TW', 'DM'] },
+    2: { 1: ['PS', 'SE', 'AI', 'DDD'], 2: ['AI13', 'OS', 'CN', 'WT'] },
+    3: { 1: ['Deep Learning', 'NLP', 'Computer Vision', 'Robotics'], 2: ['AI Project', 'AI Internship', 'AI Seminar', 'AI Research'] },
+    4: { 1: ['AI Capstone', 'AI Elective 1', 'AI Elective 2', 'AI Elective 3'], 2: ['AI Thesis', 'AI Elective 4', 'AI Elective 5', 'AI Elective 6'] }
   },
   'B.Sc. (Hons) in Computer Science (CS)': {
     1: { 1: ['CS1', 'CS2', 'CS3', 'CS4'], 2: ['CS5', 'CS6', 'CS7', 'CS8'] },
@@ -82,12 +124,26 @@ export const SimpleGPACalculator = ({ profile, onEditProfile, onBackToHome }: Si
 
   const generateModules = useCallback(() => {
     const modules: Module[] = [];
-    const degreeProgram = profile.degreeProgram as keyof typeof curriculum;
+    
+    // Construct the full degree program key based on degree program and specialization
+    let degreeProgramKey = profile.degreeProgram;
+    if (profile.degreeProgram === 'B.Sc. (Hons) in Information Technology' && profile.specialization) {
+      degreeProgramKey = `${profile.degreeProgram} - ${profile.specialization}`;
+    }
+    
+    const degreeProgram = degreeProgramKey as keyof typeof curriculum;
+    
+    // Debug: Log the degree program and available curriculum keys
+    console.log('Profile:', profile);
+    console.log('Degree Program Key:', degreeProgramKey);
+    console.log('Available curriculum keys:', Object.keys(curriculum));
+    console.log('Curriculum for this program:', curriculum[degreeProgram]);
 
     for (let year = 1; year <= profile.currentYear; year++) {
       const maxSemester = year === profile.currentYear ? profile.currentSemester : 2;
       for (let semester = 1; semester <= maxSemester; semester++) {
         const moduleNames = curriculum[degreeProgram]?.[year]?.[semester] || [];
+        console.log(`Year ${year}, Semester ${semester} modules:`, moduleNames);
         
         for (let moduleNumber = 1; moduleNumber <= 4; moduleNumber++) {
           const defaultModuleName = moduleNames[moduleNumber - 1] || `Module ${moduleNumber}`;
@@ -105,6 +161,7 @@ export const SimpleGPACalculator = ({ profile, onEditProfile, onBackToHome }: Si
       }
     }
 
+    console.log('Generated modules:', modules);
     setModules(modules);
     localStorage.setItem('gpaModules', JSON.stringify(modules));
   }, [profile]);
@@ -145,21 +202,9 @@ export const SimpleGPACalculator = ({ profile, onEditProfile, onBackToHome }: Si
   }, [modules]);
 
   useEffect(() => {
-    // Load modules from localStorage
-    const savedModules = localStorage.getItem('gpaModules');
-    if (savedModules) {
-      const parsedModules = JSON.parse(savedModules);
-      // Update any modules with 3 credits to 4 credits
-      const updatedModules = parsedModules.map((module: Module) => ({
-        ...module,
-        credits: module.credits === 3 ? 4 : module.credits
-      }));
-      setModules(updatedModules);
-      localStorage.setItem('gpaModules', JSON.stringify(updatedModules));
-      calculateGPA(updatedModules);
-    } else {
-      generateModules();
-    }
+    // Clear localStorage to force regeneration with new curriculum
+    localStorage.removeItem('gpaModules');
+    generateModules();
   }, [profile, generateModules, calculateGPA]);
 
   const handleModuleUpdate = (moduleIndex: number, field: keyof Module, value: string | number) => {
