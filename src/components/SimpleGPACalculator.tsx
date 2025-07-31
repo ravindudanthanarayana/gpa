@@ -46,39 +46,39 @@ const curriculum = {
   },
   'B.Sc. (Hons) in Information Technology - CSNE': {
     1: { 1: ['IP', 'MC', 'FC', 'DCN'], 2: ['OOP', 'DSA', 'TW', 'DM'] },
-    2: { 1: ['PS', 'SE', 'AI', 'DDD'], 2: ['CSNE13', 'OS', 'CN', 'WT'] },
-    3: { 1: ['Network Design', 'System Admin', 'Security', 'IoT'], 2: ['CSNE Project', 'CSNE Internship', 'CSNE Seminar', 'CSNE Research'] },
-    4: { 1: ['CSNE Capstone', 'CSNE Elective 1', 'CSNE Elective 2', 'CSNE Elective 3'], 2: ['CSNE Thesis', 'CSNE Elective 4', 'CSNE Elective 5', 'CSNE Elective 6'] }
+    2: { 1: ['PS', 'SE', 'AI', 'DDD'], 2: ['CSNE13', 'CSNE14', 'CSNE15', 'CSNE16'] },
+    3: { 1: ['CSNE17', 'CSNE18', 'CSNE19', 'CSNE20'], 2: ['CSNE21', 'CSNE22', 'CSNE23', 'CSNE24'] },
+    4: { 1: ['CSNE25', 'CSNE26', 'CSNE27', 'CSNE28'], 2: ['CSNE29', 'CSNE30', 'CSNE31', 'CSNE32'] }
   },
   'B.Sc. (Hons) in Information Technology - ISE': {
     1: { 1: ['IP', 'MC', 'FC', 'DCN'], 2: ['OOP', 'DSA', 'TW', 'DM'] },
-    2: { 1: ['PS', 'SE', 'AI', 'DDD'], 2: ['ISE13', 'OS', 'CN', 'WT'] },
-    3: { 1: ['IS Design', 'Business Process', 'ERP', 'E-Commerce'], 2: ['ISE Project', 'ISE Internship', 'ISE Seminar', 'ISE Research'] },
-    4: { 1: ['ISE Capstone', 'ISE Elective 1', 'ISE Elective 2', 'ISE Elective 3'], 2: ['ISE Thesis', 'ISE Elective 4', 'ISE Elective 5', 'ISE Elective 6'] }
+    2: { 1: ['PS', 'SE', 'AI', 'DDD'], 2: ['ISE13', 'ISE14', 'ISE15', 'ISE16'] },
+    3: { 1: ['ISE17', 'ISE18', 'ISE19', 'ISE20'], 2: ['ISE21', 'ISE22', 'ISE23', 'ISE24'] },
+    4: { 1: ['ISE25', 'ISE26', 'ISE27', 'ISE28'], 2: ['ISE29', 'ISE30', 'ISE31', 'ISE32'] }
   },
   'B.Sc. (Hons) in Information Technology - CS': {
     1: { 1: ['IP', 'MC', 'FC', 'DCN'], 2: ['OOP', 'DSA', 'TW', 'DM'] },
-    2: { 1: ['PS', 'SE', 'AI', 'DDD'], 2: ['CS13', 'OS', 'CN', 'WT'] },
-    3: { 1: ['Algorithms', 'Data Structures', 'Compiler Design', 'OS Design'], 2: ['CS Project', 'CS Internship', 'CS Seminar', 'CS Research'] },
-    4: { 1: ['CS Capstone', 'CS Elective 1', 'CS Elective 2', 'CS Elective 3'], 2: ['CS Thesis', 'CS Elective 4', 'CS Elective 5', 'CS Elective 6'] }
+    2: { 1: ['PS', 'SE', 'AI', 'DDD'], 2: ['CS13', 'CS14', 'CS15', 'CS16'] },
+    3: { 1: ['CS17', 'CS18', 'CS19', 'CS20'], 2: ['CS21', 'CS22', 'CS23', 'CS24'] },
+    4: { 1: ['CS25', 'CS26', 'CS27', 'CS28'], 2: ['CS29', 'CS30', 'CS31', 'CS32'] }
   },
   'B.Sc. (Hons) in Information Technology - DS': {
     1: { 1: ['IP', 'MC', 'FC', 'DCN'], 2: ['OOP', 'DSA', 'TW', 'DM'] },
-    2: { 1: ['PS', 'SE', 'AI', 'DDD'], 2: ['DS13', 'OS', 'CN', 'WT'] },
-    3: { 1: ['Data Mining', 'Machine Learning', 'Big Data', 'Statistics'], 2: ['DS Project', 'DS Internship', 'DS Seminar', 'DS Research'] },
-    4: { 1: ['DS Capstone', 'DS Elective 1', 'DS Elective 2', 'DS Elective 3'], 2: ['DS Thesis', 'DS Elective 4', 'DS Elective 5', 'DS Elective 6'] }
+    2: { 1: ['PS', 'SE', 'AI', 'DDD'], 2: ['DS13', 'DS14', 'DS15', 'DS16'] },
+    3: { 1: ['DS17', 'DS18', 'DS19', 'DS20'], 2: ['DS21', 'DS22', 'DS23', 'DS24'] },
+    4: { 1: ['DS25', 'DS26', 'DS27', 'DS28'], 2: ['DS29', 'DS30', 'DS31', 'DS32'] }
   },
   'B.Sc. (Hons) in Information Technology - IM': {
     1: { 1: ['IP', 'MC', 'FC', 'DCN'], 2: ['OOP', 'DSA', 'TW', 'DM'] },
-    2: { 1: ['PS', 'SE', 'AI', 'DDD'], 2: ['IM13', 'OS', 'CN', 'WT'] },
-    3: { 1: ['Info Management', 'Digital Libraries', 'Content Management', 'Knowledge Management'], 2: ['IM Project', 'IM Internship', 'IM Seminar', 'IM Research'] },
-    4: { 1: ['IM Capstone', 'IM Elective 1', 'IM Elective 2', 'IM Elective 3'], 2: ['IM Thesis', 'IM Elective 4', 'IM Elective 5', 'IM Elective 6'] }
+    2: { 1: ['PS', 'SE', 'AI', 'DDD'], 2: ['IM13', 'IM14', 'IM15', 'IM16'] },
+    3: { 1: ['IM17', 'IM18', 'IM19', 'IM20'], 2: ['IM21', 'IM22', 'IM23', 'IM24'] },
+    4: { 1: ['IM25', 'IM26', 'IM27', 'IM28'], 2: ['IM29', 'IM30', 'IM31', 'IM32'] }
   },
   'B.Sc. (Hons) in Information Technology - AI': {
     1: { 1: ['IP', 'MC', 'FC', 'DCN'], 2: ['OOP', 'DSA', 'TW', 'DM'] },
-    2: { 1: ['PS', 'SE', 'AI', 'DDD'], 2: ['AI13', 'OS', 'CN', 'WT'] },
-    3: { 1: ['Deep Learning', 'NLP', 'Computer Vision', 'Robotics'], 2: ['AI Project', 'AI Internship', 'AI Seminar', 'AI Research'] },
-    4: { 1: ['AI Capstone', 'AI Elective 1', 'AI Elective 2', 'AI Elective 3'], 2: ['AI Thesis', 'AI Elective 4', 'AI Elective 5', 'AI Elective 6'] }
+    2: { 1: ['PS', 'SE', 'AI', 'DDD'], 2: ['AI13', 'AI14', 'AI15', 'AI16'] },
+    3: { 1: ['AI17', 'AI18', 'AI19', 'AI20'], 2: ['AI21', 'AI22', 'AI23', 'AI24'] },
+    4: { 1: ['AI25', 'AI26', 'AI27', 'AI28'], 2: ['AI29', 'AI30', 'AI31', 'AI32'] }
   },
   'B.Sc. (Hons) in Computer Science (CS)': {
     1: { 1: ['CS1', 'CS2', 'CS3', 'CS4'], 2: ['CS5', 'CS6', 'CS7', 'CS8'] },
