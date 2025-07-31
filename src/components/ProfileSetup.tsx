@@ -58,10 +58,10 @@ export const ProfileSetup = ({ onProfileComplete, onBack }: ProfileSetupProps) =
   const showSpecialization = formData.degreeProgram === 'B.Sc. (Hons) in Information Technology';
 
   return (
-    <div className="bg-white">
-      <div className="max-w-md mx-auto px-4 py-6">
+    <div className="min-h-screen bg-white flex flex-col">
+      <div className="flex-1 max-w-md mx-auto px-4 py-6 sm:py-8 md:py-12">
         {/* Header */}
-        <header className="mb-6">
+        <header className="mb-6 sm:mb-8">
           <Button 
             onClick={onBack}
             variant="outline" 
@@ -73,11 +73,11 @@ export const ProfileSetup = ({ onProfileComplete, onBack }: ProfileSetupProps) =
           </Button>
 
           <div className="text-center">
-            <div className="flex justify-center mb-3">
+            <div className="flex justify-center mb-3 sm:mb-4">
               <img 
                 src="/lovable-uploads/680455e5-c000-4aed-bc7e-4ca59054a3e6.png" 
                 alt="SLIIT Logo - Sri Lanka Institute of Information Technology" 
-                className="h-12 w-9 sm:h-14 sm:w-11"
+                className="h-12 w-9 sm:h-14 sm:w-11 md:h-16 md:w-12"
               />
             </div>
             <h1 className="text-2xl sm:text-3xl md:text-4xl font-light text-gray-900 mb-2 tracking-tight">
@@ -88,10 +88,10 @@ export const ProfileSetup = ({ onProfileComplete, onBack }: ProfileSetupProps) =
         </header>
 
         {/* Form */}
-        <section className="mb-8">
+        <section className="mb-8 sm:mb-12">
         <Card className="border-0 shadow-xl rounded-2xl overflow-hidden bg-white w-full max-w-sm mx-auto">
-            <CardContent className="p-6">
-              <form onSubmit={handleSubmit} className="space-y-5">
+            <CardContent className="p-6 sm:p-8">
+              <form onSubmit={handleSubmit} className="space-y-5 sm:space-y-6">
                 <div className="space-y-2">
                   <Label htmlFor="degree" className="text-sm font-medium text-gray-900">
                   Degree Program
@@ -177,10 +177,10 @@ export const ProfileSetup = ({ onProfileComplete, onBack }: ProfileSetupProps) =
                 </div>
               </div>
 
-                <div className="pt-4">
+                <div className="pt-4 sm:pt-6">
                 <Button 
                   type="submit" 
-                    className="w-full h-11 bg-blue-600 hover:bg-blue-700 text-sm font-medium rounded-lg transition-all duration-300 transform hover:scale-[1.02] shadow-lg hover:shadow-xl touch-manipulation"
+                    className="w-full h-11 sm:h-12 bg-blue-600 hover:bg-blue-700 text-sm font-medium rounded-lg transition-all duration-300 transform hover:scale-[1.02] shadow-lg hover:shadow-xl touch-manipulation"
                     disabled={!formData.degreeProgram || (showSpecialization && !formData.specialization)}
                     aria-label="Continue to GPA Calculator"
                 >
@@ -192,7 +192,7 @@ export const ProfileSetup = ({ onProfileComplete, onBack }: ProfileSetupProps) =
         </Card>
         </section>
       </div>
-      <footer className="text-center py-3 text-xs text-gray-500 bg-white border-t border-gray-100">
+      <footer className="text-center py-3 sm:py-4 text-xs text-gray-500 bg-white border-t border-gray-100 flex-shrink-0">
         <a href="https://www.linkedin.com/in/ravindudanthanarayana/" target="_blank" rel="noopener noreferrer" className="hover:text-blue-600 transition-colors font-medium">
           Developed by Ravindu 👨🏻‍💻
         </a>
