@@ -7,9 +7,9 @@ interface LandingPageProps {
 
 export const LandingPage = ({ onGetStarted }: LandingPageProps) => {
   return (
-    <main className="h-screen h-[100dvh] bg-white relative overflow-hidden">
+    <main className="h-screen h-[100dvh] bg-white relative overflow-hidden flex flex-col">
       {/* Apple-style hero section */}
-      <div className="relative z-10 h-full flex flex-col overflow-hidden">
+      <div className="relative z-10 flex-1 flex flex-col overflow-hidden">
         {/* Hero Content */}
         <section className="flex-1 flex items-center justify-center px-3 min-h-0">
           <div className="max-w-2xl mx-auto text-center">
@@ -62,7 +62,9 @@ export const LandingPage = ({ onGetStarted }: LandingPageProps) => {
         <div className="absolute top-1/4 right-0 w-32 h-32 sm:w-48 sm:h-48 md:w-64 md:h-64 bg-blue-50 rounded-full blur-3xl opacity-30"></div>
         <div className="absolute bottom-1/4 left-0 w-32 h-32 sm:w-48 sm:h-48 md:w-64 md:h-64 bg-blue-50 rounded-full blur-3xl opacity-20"></div>
       </div>
-      <footer className="absolute bottom-0 w-full text-center py-1 sm:py-2 text-xs text-gray-500 z-20">
+      
+      {/* Footer */}
+      <footer className="relative z-20 text-center py-2 text-xs text-gray-500 flex-shrink-0">
         <a href="https://www.linkedin.com/in/ravindudanthanarayana/" target="_blank" rel="noopener noreferrer" className="hover:text-blue-600 transition-colors">
           Developed by Ravindu 👨🏻‍💻
         </a>
