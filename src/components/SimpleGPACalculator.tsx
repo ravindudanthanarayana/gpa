@@ -35,12 +35,12 @@ const curriculum = {
   'B.Sc. (Hons) in Information Technology - IT': {
     1: { 1: ['IP', 'MC', 'FC', 'DCN'], 2: ['OOP', 'DSA', 'TW', 'DM'] },
     2: { 1: ['PS', 'SE', 'AI', 'DDD'], 2: ['IT13', 'IT14', 'IT15', 'IT16'] },
-    3: { 1: ['Web Dev', 'Mobile Dev', 'Cloud Comp', 'Cyber Sec'], 2: ['IT Project', 'IT Internship', 'IT Seminar', 'IT Research'] },
-    4: { 1: ['IT Capstone', 'IT Elective 1', 'IT Elective 2', 'IT Elective 3'], 2: ['IT Thesis', 'IT Elective 4', 'IT Elective 5', 'IT Elective 6'] }
+    3: { 1: ['IT17', 'IT18', 'IT19', 'IT20'], 2: ['IT21', 'IT22', 'IT23', 'IT24'] },
+    4: { 1: ['IT25', 'IT26', 'IT27', 'IT28'], 2: ['IT29', 'IT30', 'IT31', 'IT32'] }
   },
   'B.Sc. (Hons) in Information Technology - SE': {
     1: { 1: ['IP', 'MC', 'FC', 'DCN'], 2: ['OOP', 'DSA', 'TW', 'DM'] },
-    2: { 1: ['PS', 'SE', 'AI', 'DDD'], 2: ['SE13', 'OS', 'CN', 'WT'] },
+    2: { 1: ['PS', 'SE', 'AI', 'DDD'], 2: ['SE13', 'SE14', 'SE15', 'SE16'] },
     3: { 1: ['Software Arch', 'DevOps', 'Testing', 'Agile'], 2: ['SE Project', 'SE Internship', 'SE Seminar', 'SE Research'] },
     4: { 1: ['SE Capstone', 'SE Elective 1', 'SE Elective 2', 'SE Elective 3'], 2: ['SE Thesis', 'SE Elective 4', 'SE Elective 5', 'SE Elective 6'] }
   },

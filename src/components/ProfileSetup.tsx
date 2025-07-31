@@ -59,25 +59,25 @@ export const ProfileSetup = ({ onProfileComplete, onBack }: ProfileSetupProps) =
 
   return (
     <main className="h-screen bg-white flex flex-col">
-      <div className="flex-1 max-w-xl mx-auto px-4 py-4">
+      <div className="flex-1 max-w-md mx-auto px-4 py-6 flex flex-col">
         {/* Header */}
-        <header className="mb-4">
+        <header className="mb-6">
           <Button 
             onClick={onBack}
             variant="outline" 
-            className="mb-3 border-gray-200 text-gray-600 hover:bg-gray-50 rounded-full px-4 py-2 touch-manipulation"
+            className="mb-4 border-gray-200 text-gray-600 hover:bg-gray-50 rounded-full px-4 py-2 touch-manipulation"
             aria-label="Go back to landing page"
           >
             <ArrowLeft className="mr-2 h-4 w-4" />
             Back
           </Button>
 
-          <div className="text-center mb-4">
-            <div className="flex justify-center mb-2">
+          <div className="text-center">
+            <div className="flex justify-center mb-3">
               <img 
                 src="/lovable-uploads/680455e5-c000-4aed-bc7e-4ca59054a3e6.png" 
                 alt="SLIIT Logo - Sri Lanka Institute of Information Technology" 
-                className="h-10 w-8"
+                className="h-12 w-9 sm:h-14 sm:w-11"
               />
             </div>
             <h1 className="text-2xl sm:text-3xl md:text-4xl font-light text-gray-900 mb-2 tracking-tight">
@@ -88,10 +88,10 @@ export const ProfileSetup = ({ onProfileComplete, onBack }: ProfileSetupProps) =
         </header>
 
         {/* Form */}
-        <section className="flex-1">
-        <Card className="border-0 shadow-xl rounded-2xl overflow-hidden bg-white h-full">
-            <CardContent className="p-4 sm:p-6">
-              <form onSubmit={handleSubmit} className="space-y-4 h-full flex flex-col">
+        <section className="flex-1 flex items-center justify-center">
+        <Card className="border-0 shadow-xl rounded-2xl overflow-hidden bg-white w-full max-w-sm">
+            <CardContent className="p-6">
+              <form onSubmit={handleSubmit} className="space-y-5">
                 <div className="space-y-2">
                   <Label htmlFor="degree" className="text-sm font-medium text-gray-900">
                   Degree Program
@@ -100,7 +100,7 @@ export const ProfileSetup = ({ onProfileComplete, onBack }: ProfileSetupProps) =
                   value={formData.degreeProgram}
                     onValueChange={(value) => setFormData({ ...formData, degreeProgram: value, specialization: '' })}
                 >
-                    <SelectTrigger className="h-10 border-gray-200 rounded-lg text-sm bg-gray-50 hover:bg-gray-100 transition-colors touch-manipulation">
+                    <SelectTrigger className="h-11 border-gray-200 rounded-lg text-sm bg-gray-50 hover:bg-gray-100 transition-colors touch-manipulation">
                     <SelectValue placeholder="Select your degree program" />
                   </SelectTrigger>
                     <SelectContent className="rounded-lg border-gray-200 max-h-48 w-[calc(100vw-2rem)] sm:w-auto">
@@ -122,7 +122,7 @@ export const ProfileSetup = ({ onProfileComplete, onBack }: ProfileSetupProps) =
                       value={formData.specialization}
                       onValueChange={(value) => setFormData({ ...formData, specialization: value })}
                     >
-                      <SelectTrigger className="h-10 border-gray-200 rounded-lg text-sm bg-gray-50 hover:bg-gray-100 transition-colors touch-manipulation">
+                      <SelectTrigger className="h-11 border-gray-200 rounded-lg text-sm bg-gray-50 hover:bg-gray-100 transition-colors touch-manipulation">
                         <SelectValue placeholder="Select your specialization" />
                       </SelectTrigger>
                       <SelectContent className="rounded-lg border-gray-200 w-[calc(100vw-2rem)] sm:w-auto">
@@ -136,7 +136,7 @@ export const ProfileSetup = ({ onProfileComplete, onBack }: ProfileSetupProps) =
                   </div>
                 )}
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <Label htmlFor="year" className="text-sm font-medium text-gray-900">
                     Current Year
@@ -145,7 +145,7 @@ export const ProfileSetup = ({ onProfileComplete, onBack }: ProfileSetupProps) =
                     value={formData.currentYear.toString()}
                     onValueChange={(value) => setFormData({ ...formData, currentYear: parseInt(value) })}
                   >
-                      <SelectTrigger className="h-10 border-gray-200 rounded-lg text-sm bg-gray-50 hover:bg-gray-100 transition-colors touch-manipulation">
+                      <SelectTrigger className="h-11 border-gray-200 rounded-lg text-sm bg-gray-50 hover:bg-gray-100 transition-colors touch-manipulation">
                       <SelectValue />
                     </SelectTrigger>
                       <SelectContent className="rounded-lg border-gray-200 w-[calc(100vw-2rem)] sm:w-auto">
@@ -166,7 +166,7 @@ export const ProfileSetup = ({ onProfileComplete, onBack }: ProfileSetupProps) =
                     value={formData.currentSemester.toString()}
                     onValueChange={(value) => setFormData({ ...formData, currentSemester: parseInt(value) })}
                   >
-                      <SelectTrigger className="h-10 border-gray-200 rounded-lg text-sm bg-gray-50 hover:bg-gray-100 transition-colors touch-manipulation">
+                      <SelectTrigger className="h-11 border-gray-200 rounded-lg text-sm bg-gray-50 hover:bg-gray-100 transition-colors touch-manipulation">
                       <SelectValue />
                     </SelectTrigger>
                       <SelectContent className="rounded-lg border-gray-200 w-[calc(100vw-2rem)] sm:w-auto">
@@ -177,10 +177,10 @@ export const ProfileSetup = ({ onProfileComplete, onBack }: ProfileSetupProps) =
                 </div>
               </div>
 
-                <div className="pt-2 mt-auto">
+                <div className="pt-4">
                 <Button 
                   type="submit" 
-                    className="w-full h-10 bg-blue-600 hover:bg-blue-700 text-sm font-medium rounded-lg transition-all duration-300 transform hover:scale-[1.02] shadow-lg hover:shadow-xl touch-manipulation"
+                    className="w-full h-11 bg-blue-600 hover:bg-blue-700 text-sm font-medium rounded-lg transition-all duration-300 transform hover:scale-[1.02] shadow-lg hover:shadow-xl touch-manipulation"
                     disabled={!formData.degreeProgram || (showSpecialization && !formData.specialization)}
                     aria-label="Continue to GPA Calculator"
                 >
@@ -192,7 +192,7 @@ export const ProfileSetup = ({ onProfileComplete, onBack }: ProfileSetupProps) =
         </Card>
         </section>
       </div>
-      <footer className="text-center py-2 text-xs text-gray-500">
+      <footer className="text-center py-3 text-xs text-gray-500">
         <a href="https://www.linkedin.com/in/ravindudanthanarayana/" target="_blank" rel="noopener noreferrer" className="hover:text-blue-600 transition-colors">
           Developed by Ravindu 👨🏻‍💻
         </a>
