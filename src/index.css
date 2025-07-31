@@ -103,6 +103,8 @@
     overflow: hidden;
     position: fixed;
     width: 100%;
+    /* Ensure footer is visible */
+    padding-bottom: env(safe-area-inset-bottom);
   }
 
   html {
@@ -117,5 +119,7 @@
     height: 100vh;
     height: 100dvh;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
   }
 }
