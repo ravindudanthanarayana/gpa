@@ -7,16 +7,9 @@ interface LandingPageProps {
 
 export const LandingPage = ({ onGetStarted }: LandingPageProps) => {
   return (
-    <main className="h-screen max-h-screen bg-white relative overflow-hidden">
+    <main className="h-screen h-[100dvh] bg-white relative overflow-hidden">
       {/* Apple-style hero section */}
       <div className="relative z-10 h-full flex flex-col overflow-hidden">
-        {/* Navigation */}
-        <header className="w-full px-3 py-1 flex-shrink-0">
-          <nav className="max-w-4xl mx-auto flex items-center justify-start">
-            {/* Removed SLIIT logo from navigation */}
-        </nav>
-        </header>
-
         {/* Hero Content */}
         <section className="flex-1 flex items-center justify-center px-3 min-h-0">
           <div className="max-w-2xl mx-auto text-center">
@@ -62,9 +55,6 @@ export const LandingPage = ({ onGetStarted }: LandingPageProps) => {
             </div>
           </div>
         </section>
-
-        {/* Bottom spacing */}
-        <div className="h-1 sm:h-2 flex-shrink-0"></div>
       </div>
 
       {/* Subtle background elements */}

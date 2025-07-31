@@ -97,5 +97,25 @@
 
   body {
     @apply bg-background text-foreground;
+    /* Mobile viewport fixes */
+    height: 100vh;
+    height: 100dvh;
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+  }
+
+  html {
+    /* Mobile viewport fixes */
+    height: 100vh;
+    height: 100dvh;
+    overflow: hidden;
+  }
+
+  #root {
+    /* Mobile viewport fixes */
+    height: 100vh;
+    height: 100dvh;
+    overflow: hidden;
   }
 }

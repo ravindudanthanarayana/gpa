@@ -58,7 +58,7 @@ export const ProfileSetup = ({ onProfileComplete, onBack }: ProfileSetupProps) =
   const showSpecialization = formData.degreeProgram === 'B.Sc. (Hons) in Information Technology';
 
   return (
-    <main className="h-screen max-h-screen bg-white flex flex-col overflow-hidden">
+    <main className="h-screen h-[100dvh] bg-white flex flex-col overflow-hidden">
       <div className="flex-1 max-w-md mx-auto px-4 py-6 flex flex-col min-h-0">
         {/* Header */}
         <header className="mb-6 flex-shrink-0">
