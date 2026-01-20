@@ -111,6 +111,104 @@ const gradePoints: { [key: string]: number } = {
 
 const grades = ['A+', 'A', 'A-', 'B+', 'B', 'B-', 'C+', 'C', 'C-', 'D+', 'D', 'E'];
 
+function getCumulativeFeedback(gpa: number) {
+  if (gpa >= 3.85) {
+    return {
+      grade: 'A+',
+      points: '4.0',
+      emoji: '🤩',
+      message: "A+! You didn’t just pass, you conquered the universe!",
+    };
+  }
+  if (gpa >= 3.7) {
+    return {
+      grade: 'A',
+      points: '4.0',
+      emoji: '😁',
+      message: "A! Almost perfect, keep shining and raise the bar even higher!",
+    };
+  }
+  if (gpa >= 3.3) {
+    return {
+      grade: 'A-',
+      points: '3.7',
+      emoji: '😄',
+      message: "A-! Almost there… just a little push and you’re at the top!",
+    };
+  }
+  if (gpa >= 3.0) {
+    return {
+      grade: 'B+',
+      points: '3.3',
+      emoji: '🙂',
+      message: "B+! Solid work, keep going. you’re building greatness!",
+    };
+  }
+  if (gpa >= 2.7) {
+    return {
+      grade: 'B',
+      points: '3.0',
+      emoji: '😌',
+      message: "B! Good job! Every step counts toward your victory.",
+    };
+  }
+  if (gpa >= 2.3) {
+    return {
+      grade: 'B-',
+      points: '2.7',
+      emoji: '😐',
+      message: "B-! Not bad, but don’t get comfy. aim higher!",
+    };
+  }
+  if (gpa >= 2.0) {
+    return {
+      grade: 'C+',
+      points: '2.3',
+      emoji: '😕',
+      message: "C+! You passed, but there’s room to level up!",
+    };
+  }
+  if (gpa >= 1.7) {
+    return {
+      grade: 'C',
+      points: '2.0',
+      emoji: '😶',
+      message: "C! You made it! Now let’s turn that pass into progress.",
+    };
+  }
+  if (gpa >= 1.3) {
+    return {
+      grade: 'C-',
+      points: '1.7',
+      emoji: '😬',
+      message: "C-! Barely there, but remember, every great story starts somewhere!",
+    };
+  }
+  if (gpa >= 1.0) {
+    return {
+      grade: 'D+',
+      points: '1.3',
+      emoji: '😟',
+      message: "D+! Oof… it’s a struggle, but the comeback will be epic!",
+    };
+  }
+  if (gpa >= 0.5) {
+    return {
+      grade: 'D',
+      points: '1.0',
+      emoji: '😢',
+      message: "D! Tough spot, but champions are made from setbacks!",
+    };
+  }
+
+  return {
+    grade: 'E',
+    points: '0.0',
+    emoji: '💀',
+    message: "E! Yikes, but don’t worry, failure is just your plot twist!",
+  };
+}
+
 export const SimpleGPACalculator = ({ profile, onEditProfile, onBackToHome }: SimpleGPACalculatorProps) => {
   const [modules, setModules] = useState<Module[]>([]);
   const [gpaData, setGpaData] = useState({ cumulative_gpa: 0, total_credits: 0 });
@@ -329,18 +427,50 @@ export const SimpleGPACalculator = ({ profile, onEditProfile, onBackToHome }: Si
 
         {/* GPA Summary */}
         <section>
-        <Card className="mb-12 sm:mb-16 border-0 shadow-lg rounded-3xl sm:rounded-[2rem] overflow-hidden bg-card">
-            <CardContent className="p-8 sm:p-12">
+          <Card className="mb-12 sm:mb-16 border-0 shadow-lg rounded-3xl sm:rounded-[2rem] overflow-hidden bg-card">
+            <CardContent className="p-8 sm:p-12 space-y-6">
               <div className="flex justify-center">
-              <div className="text-center">
-                  <div className="text-5xl sm:text-6xl font-normal text-blue-600 mb-3 tracking-tight" aria-label={`Cumulative GPA: ${gpaData.cumulative_gpa.toFixed(2)}`}>
-                  {gpaData.cumulative_gpa.toFixed(2)}
-                </div>
+                <div className="text-center">
+                  <div
+                    className="text-5xl sm:text-6xl font-normal text-blue-600 mb-3 tracking-tight"
+                    aria-label={`Cumulative GPA: ${gpaData.cumulative_gpa.toFixed(2)}`}
+                  >
+                    {gpaData.cumulative_gpa.toFixed(2)}
+                  </div>
                   <div className="text-muted-foreground text-lg">Cumulative GPA</div>
+                </div>
               </div>
-            </div>
-          </CardContent>
-        </Card>
+
+              {/* Personalized grade feedback */}
+              {gpaData.total_credits > 0 && (
+                <div className="mt-4 border-t border-border/60 pt-4">
+                  {(() => {
+                    const feedback = getCumulativeFeedback(gpaData.cumulative_gpa);
+                    return (
+                      <div className="flex justify-center">
+                        <div className="rounded-xl border border-border bg-background/60 px-4 py-3 flex items-start gap-3 max-w-xl text-sm sm:text-base">
+                          <div className="text-2xl leading-none">
+                            {feedback.emoji}
+                          </div>
+                          <div>
+                            <div className="flex items-center gap-2 font-semibold">
+                              <span>{feedback.grade}</span>
+                              <span className="text-muted-foreground text-xs">
+                                {feedback.points}
+                              </span>
+                            </div>
+                            <p className="text-muted-foreground mt-1">
+                              {feedback.message}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })()}
+                </div>
+              )}
+            </CardContent>
+          </Card>
         </section>
 
         {/* Modules Section */}
