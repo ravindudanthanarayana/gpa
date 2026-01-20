@@ -43,13 +43,13 @@ export const ClerkAuth = ({ onBack }: ClerkAuthProps) => {
           <Button
             variant="ghost"
             onClick={onBack}
-            className="mb-6 text-white hover:bg-white/10"
+            className="mb-6 text-white hover:bg-white/10 dark:hover:bg-white/10"
           >
             <ArrowLeft className="h-4 w-4 mr-2" />
             Back to Home
           </Button>
 
-          <Card className="bg-white/95 backdrop-blur-lg border-white/20 shadow-2xl animate-fade-in">
+          <Card className="bg-card/95 text-card-foreground backdrop-blur-lg border-border/40 shadow-2xl animate-fade-in">
             <CardHeader className="text-center space-y-4">
               <div className="flex justify-center">
                 <img 
@@ -58,7 +58,7 @@ export const ClerkAuth = ({ onBack }: ClerkAuthProps) => {
                   className="h-16 w-auto object-contain"
                 />
               </div>
-              <CardTitle className="text-2xl font-bold text-gray-900">
+              <CardTitle className="text-2xl font-bold text-foreground">
                 {isSignUp ? 'Create Account' : 'Welcome Back'}
               </CardTitle>
             </CardHeader>

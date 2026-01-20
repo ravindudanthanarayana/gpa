@@ -103,6 +103,26 @@
       }
     }
     </script>
+
+    <!-- Initial theme script: applies saved or system theme before React mounts -->
+    <script>
+      (function () {
+        try {
+          var storageKey = "theme";
+          var storedTheme = window.localStorage.getItem(storageKey);
+          var prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+          var theme = storedTheme === "light" || storedTheme === "dark" ? storedTheme : (prefersDark ? "dark" : "light");
+
+          if (theme === "dark") {
+            document.documentElement.classList.add("dark");
+          } else {
+            document.documentElement.classList.remove("dark");
+          }
+        } catch (e) {
+          // Fail silently – app will fall back to default styles
+        }
+      })();
+    </script>
   </head>
 
   <body>

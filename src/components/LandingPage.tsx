@@ -7,7 +7,7 @@ interface LandingPageProps {
 
 export const LandingPage = ({ onGetStarted }: LandingPageProps) => {
   return (
-    <main className="h-screen h-[100dvh] bg-white relative overflow-hidden flex flex-col">
+    <main className="h-screen h-[100dvh] bg-background text-foreground relative overflow-hidden flex flex-col">
       {/* Apple-style hero section */}
       <div className="relative z-10 flex-1 flex flex-col overflow-hidden">
         {/* Hero Content */}
@@ -24,13 +24,13 @@ export const LandingPage = ({ onGetStarted }: LandingPageProps) => {
               </div>
               
               {/* Main Headline */}
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light text-gray-900 mb-2 sm:mb-3 tracking-tight leading-none">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light text-foreground mb-2 sm:mb-3 tracking-tight leading-none">
                 GPA
                 <span className="block text-blue-600 font-normal">Calculator</span>
               </h1>
               
               {/* Subtitle */}
-              <p className="text-xs sm:text-sm md:text-lg lg:text-xl text-gray-600 mb-4 sm:mb-6 max-w-xl sm:max-w-2xl mx-auto font-light leading-relaxed">
+              <p className="text-xs sm:text-sm md:text-lg lg:text-xl text-muted-foreground mb-4 sm:mb-6 max-w-xl sm:max-w-2xl mx-auto font-light leading-relaxed">
                 Calculate your GPA with precision.
                 <br className="hidden sm:block" />
                 <span className="block sm:inline"> Track your academic progress.</span>
@@ -48,7 +48,7 @@ export const LandingPage = ({ onGetStarted }: LandingPageProps) => {
                   <ArrowRight className="ml-1 sm:ml-2 h-3 w-3 sm:h-4 sm:w-4" />
                 </Button>
                 
-                <p className="text-xs text-gray-500 mt-1 sm:mt-2">
+                <p className="text-xs text-muted-foreground mt-1 sm:mt-2">
                   For SLIIT Faculty of Computing students
                 </p>
               </div>
@@ -59,12 +59,12 @@ export const LandingPage = ({ onGetStarted }: LandingPageProps) => {
 
       {/* Subtle background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
-        <div className="absolute top-1/4 right-0 w-32 h-32 sm:w-48 sm:h-48 md:w-64 md:h-64 bg-blue-50 rounded-full blur-3xl opacity-30"></div>
-        <div className="absolute bottom-1/4 left-0 w-32 h-32 sm:w-48 sm:h-48 md:w-64 md:h-64 bg-blue-50 rounded-full blur-3xl opacity-20"></div>
+        <div className="absolute top-1/4 right-0 w-32 h-32 sm:w-48 sm:h-48 md:w-64 md:h-64 bg-blue-500/10 dark:bg-blue-400/10 rounded-full blur-3xl opacity-30"></div>
+        <div className="absolute bottom-1/4 left-0 w-32 h-32 sm:w-48 sm:h-48 md:w-64 md:h-64 bg-blue-500/10 dark:bg-blue-400/10 rounded-full blur-3xl opacity-20"></div>
       </div>
       
       {/* Footer */}
-      <footer className="relative z-20 text-center py-4 text-xs text-gray-500 bg-white border-t border-gray-100 flex-shrink-0">
+      <footer className="relative z-20 text-center py-4 text-xs text-muted-foreground bg-background border-t border-border flex-shrink-0">
         <a href="https://www.linkedin.com/in/ravindudanthanarayana/" target="_blank" rel="noopener noreferrer" className="hover:text-blue-600 transition-colors font-medium">
           Developed by Ravindu 👨🏻‍💻
         </a>

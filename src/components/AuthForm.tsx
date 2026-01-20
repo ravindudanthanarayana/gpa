@@ -62,15 +62,15 @@ export const AuthForm = ({ onLogin }: AuthFormProps) => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-100 flex items-center justify-center p-4 relative overflow-hidden">
+    <div className="min-h-screen bg-background text-foreground flex items-center justify-center p-4 relative overflow-hidden">
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-blue-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-pulse"></div>
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-purple-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-pulse delay-1000"></div>
-        <div className="absolute top-40 left-40 w-60 h-60 bg-indigo-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-pulse delay-500"></div>
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-blue-500/20 dark:bg-blue-400/15 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-pulse"></div>
+        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-purple-500/20 dark:bg-purple-400/15 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-pulse delay-1000"></div>
+        <div className="absolute top-40 left-40 w-60 h-60 bg-indigo-500/20 dark:bg-indigo-400/15 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-pulse delay-500"></div>
       </div>
 
-      <Card className="w-full max-w-md relative z-10 animate-fade-in shadow-2xl border-0 bg-white/95 backdrop-blur-sm">
+      <Card className="w-full max-w-md relative z-10 animate-fade-in shadow-2xl border-0 bg-card/95 text-card-foreground backdrop-blur-sm">
         <CardHeader className="text-center space-y-6">
           {/* SLIIT Logo */}
           <div className="flex justify-center animate-scale-in">
@@ -82,10 +82,10 @@ export const AuthForm = ({ onLogin }: AuthFormProps) => {
           </div>
           
           <div className="space-y-2 animate-fade-in delay-200">
-            <CardTitle className="text-3xl font-bold text-gray-900 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            <CardTitle className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
               SLIIT GPA Calculator
             </CardTitle>
-            <CardDescription className="text-lg text-gray-600">
+            <CardDescription className="text-lg text-muted-foreground">
               {isSignUp ? 'Create your account to get started' : 'Welcome back! Sign in to continue'}
             </CardDescription>
           </div>
@@ -101,7 +101,7 @@ export const AuthForm = ({ onLogin }: AuthFormProps) => {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
-                  className="h-12 pl-4 border-2 border-gray-200 focus:border-blue-500 transition-all duration-300 group-hover:border-gray-300"
+                  className="h-12 pl-4 border-2 border-input bg-background focus:border-blue-500 transition-all duration-300 group-hover:border-border"
                 />
               </div>
               
@@ -112,7 +112,7 @@ export const AuthForm = ({ onLogin }: AuthFormProps) => {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
-                  className="h-12 pl-4 border-2 border-gray-200 focus:border-blue-500 transition-all duration-300 group-hover:border-gray-300"
+                  className="h-12 pl-4 border-2 border-input bg-background focus:border-blue-500 transition-all duration-300 group-hover:border-border"
                 />
               </div>
             </div>

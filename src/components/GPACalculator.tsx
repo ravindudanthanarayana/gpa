@@ -482,12 +482,12 @@ export const GPACalculator = () => {
   const groupedModules = groupModulesBySemester();
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-4">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-background dark:to-background p-4">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-8 gap-4">
           <div className="flex-1">
-            <h1 className="text-2xl lg:text-3xl font-bold text-gray-900 flex items-center gap-2">
+            <h1 className="text-2xl lg:text-3xl font-bold text-foreground flex items-center gap-2">
               <Calculator className="h-6 w-6 lg:h-8 lg:w-8 text-blue-600" />
               SLIIT GPA Calculator
             </h1>
@@ -547,7 +547,7 @@ export const GPACalculator = () => {
                 </div>
               ) : (
                 <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2">
-                  <p className="text-gray-600">
+                  <p className="text-muted-foreground">
                     {profile?.degree_program} - Year {profile?.current_year}, Semester {profile?.current_semester}
                   </p>
                   <Button onClick={handleEditProfile} variant="outline" size="sm">
@@ -566,10 +566,10 @@ export const GPACalculator = () => {
         {/* Dean's List Celebration */}
         {showCelebration && (
           <div className="fixed inset-0 bg-black bg-opacity-20 flex items-center justify-center z-50 animate-in fade-in duration-200">
-            <div className="bg-white rounded-lg p-6 max-w-sm mx-4 text-center shadow-lg animate-in zoom-in-95 duration-300 relative">
+            <div className="bg-card text-card-foreground border border-border rounded-lg p-6 max-w-sm mx-4 text-center shadow-lg animate-in zoom-in-95 duration-300 relative">
               <button 
                 onClick={() => setShowCelebration(false)}
-                className="absolute top-2 right-2 text-gray-400 hover:text-gray-600 transition-colors"
+                className="absolute top-2 right-2 text-muted-foreground hover:text-foreground transition-colors"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -578,10 +578,10 @@ export const GPACalculator = () => {
               <div className="flex justify-center mb-3">
                 <Trophy className="h-8 w-8 text-yellow-500" />
               </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">
+              <h3 className="text-lg font-semibold text-foreground mb-2">
                 🎉 Congratulations!
               </h3>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-muted-foreground">
                 You've been selected for the Dean's List!
               </p>
             </div>
@@ -600,19 +600,19 @@ export const GPACalculator = () => {
                   <div className="text-2xl font-bold text-blue-600">
                     {gpaData.cumulative_gpa.toFixed(2)}
                   </div>
-                  <div className="text-sm text-gray-600">Cumulative GPA</div>
+                  <div className="text-sm text-muted-foreground">Cumulative GPA</div>
                 </div>
                 <div className="text-center">
                   <div className="text-2xl font-bold text-green-600">
                     {gpaData.semester_gpa.toFixed(2)}
                   </div>
-                  <div className="text-sm text-gray-600">Semester GPA</div>
+                  <div className="text-sm text-muted-foreground">Semester GPA</div>
                 </div>
                 <div className="text-center">
                   <div className="text-2xl font-bold text-purple-600">
                     {gpaData.total_credits}
                   </div>
-                  <div className="text-sm text-gray-600">Total Credits</div>
+                  <div className="text-sm text-muted-foreground">Total Credits</div>
                 </div>
               </div>
             </CardContent>
@@ -634,7 +634,7 @@ export const GPACalculator = () => {
                       <div key={module.id} className="flex flex-col sm:flex-row items-start sm:items-center gap-4 p-4 border rounded-lg">
                         <div className="flex-1 min-w-0">
                           <div className="font-medium truncate">{module.module_name}</div>
-                          <div className="text-sm text-gray-600">Module {module.module_number}</div>
+                          <div className="text-sm text-muted-foreground">Module {module.module_number}</div>
                         </div>
                         <div className="flex items-center gap-2 w-full sm:w-auto">
                         <Input
@@ -645,7 +645,7 @@ export const GPACalculator = () => {
                           min="1"
                           max="6"
                         />
-                          <span className="text-sm text-gray-600 whitespace-nowrap">credits</span>
+                          <span className="text-sm text-muted-foreground whitespace-nowrap">credits</span>
                         </div>
                         <Select
                           value={module.grade || ''}
@@ -663,7 +663,7 @@ export const GPACalculator = () => {
                           </SelectContent>
                         </Select>
                         {module.grade_points !== undefined && (
-                          <div className="text-sm text-gray-600 w-12 text-right">
+                          <div className="text-sm text-muted-foreground w-12 text-right">
                             {module.grade_points.toFixed(1)}
                           </div>
                         )}

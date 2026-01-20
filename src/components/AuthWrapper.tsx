@@ -47,8 +47,8 @@ export const AuthWrapper = ({ children }: AuthWrapperProps) => {
 
   return (
     <div>
-      <div className="bg-white shadow-sm border-b px-4 py-2 flex justify-between items-center">
-        <span className="text-sm text-gray-600">Welcome, {user.email}</span>
+      <div className="bg-background text-foreground shadow-sm border-b border-border px-4 py-2 flex justify-between items-center">
+        <span className="text-sm text-muted-foreground">Welcome, {user.email}</span>
         <button
           onClick={handleLogout}
           className="text-sm text-red-600 hover:text-red-800"
