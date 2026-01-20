@@ -116,32 +116,32 @@ function getCumulativeFeedback(gpa: number) {
     return {
       grade: 'A+',
       points: '4.0',
-      emoji: '🤩',
-      message: "A+! You didn’t just pass, you conquered the universe!",
+      emoji: '🗿',
+      message: "A+! Bro deserved Harvard, not SLIIT!",
     };
   }
   if (gpa >= 3.7) {
     return {
       grade: 'A',
       points: '4.0',
-      emoji: '😁',
-      message: "A! Almost perfect, keep shining and raise the bar even higher!",
+      emoji: '🫦',
+      message: "A! Missed perfection by one MCQ",
     };
   }
   if (gpa >= 3.3) {
     return {
       grade: 'A-',
       points: '3.7',
-      emoji: '😄',
-      message: "A-! Almost there… just a little push and you’re at the top!",
+      emoji: '😮‍💨',
+      message: "A-! GPA said relax, you already won.",
     };
   }
   if (gpa >= 3.0) {
     return {
       grade: 'B+',
       points: '3.3',
-      emoji: '🙂',
-      message: "B+! Solid work, keep going. you’re building greatness!",
+      emoji: '😏',
+      message: "B+! Not a topper, not a failure. Perfect balance.",
     };
   }
   if (gpa >= 2.7) {
@@ -149,63 +149,63 @@ function getCumulativeFeedback(gpa: number) {
       grade: 'B',
       points: '3.0',
       emoji: '😌',
-      message: "B! Good job! Every step counts toward your victory.",
+      message: "B! You passed with confidence… maybe too much confidence.",
     };
   }
   if (gpa >= 2.3) {
     return {
       grade: 'B-',
       points: '2.7',
-      emoji: '😐',
-      message: "B-! Not bad, but don’t get comfy. aim higher!",
+      emoji: '😫',
+      message: "B-! Passed… but barely escaped the danger zone.",
     };
   }
   if (gpa >= 2.0) {
     return {
       grade: 'C+',
       points: '2.3',
-      emoji: '😕',
-      message: "C+! You passed, but there’s room to level up!",
+      emoji: '😎',
+      message: "C+! Pass is a pass. Don’t ask marks.",
     };
   }
   if (gpa >= 1.7) {
     return {
       grade: 'C',
       points: '2.0',
-      emoji: '😶',
-      message: "C! You made it! Now let’s turn that pass into progress.",
+      emoji: '🥳',
+      message: "C! Congratulations… you are officially sponsoring the new SLIIT building.",
     };
   }
   if (gpa >= 1.3) {
     return {
       grade: 'C-',
       points: '1.7',
-      emoji: '😬',
-      message: "C-! Barely there, but remember, every great story starts somewhere!",
+      emoji: '🥳',
+      message: "C-! Congratulations… you are officially sponsoring the new SLIIT building.",
     };
   }
   if (gpa >= 1.0) {
     return {
       grade: 'D+',
       points: '1.3',
-      emoji: '😟',
-      message: "D+! Oof… it’s a struggle, but the comeback will be epic!",
+      emoji: '🫵🏼',
+      message: "D+! Meka hada hada in nathuwa gihin padam karapan bng",
     };
   }
   if (gpa >= 0.5) {
     return {
       grade: 'D',
       points: '1.0',
-      emoji: '😢',
-      message: "D! Tough spot, but champions are made from setbacks!",
+      emoji: '🫵🏼',
+      message: "D! Meka hada hada in nathuwa gihin padam karapan bng",
     };
   }
 
   return {
     grade: 'E',
     points: '0.0',
-    emoji: '💀',
-    message: "E! Yikes, but don’t worry, failure is just your plot twist!",
+    emoji: '🫵🏼',
+    message: "E! Meka hada hada in nathuwa gihin padam karapan bng",
   };
 }
 
