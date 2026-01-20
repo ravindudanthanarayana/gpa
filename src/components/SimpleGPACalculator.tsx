@@ -34,49 +34,49 @@ interface SimpleGPACalculatorProps {
 const curriculum = {
   'B.Sc. (Hons) in Information Technology - IT': {
     1: { 1: ['IP', 'MC', 'FC', 'DCN'], 2: ['OOP', 'DSA', 'TW', 'DM'] },
-    2: { 1: ['PS', 'SE', 'AI', 'DDD'], 2: ['IT13', 'IT14', 'IT15', 'IT16'] },
+    2: { 1: ['PS', 'SE', 'AI', 'DDD'], 2: ['OSSA', 'WMT', 'ITP', 'PS'] },
     3: { 1: ['IT17', 'IT18', 'IT19', 'IT20'], 2: ['IT21', 'IT22', 'IT23', 'IT24'] },
     4: { 1: ['IT25', 'IT26', 'IT27', 'IT28'], 2: ['IT29', 'IT30', 'IT31', 'IT32'] }
   },
   'B.Sc. (Hons) in Information Technology - SE': {
     1: { 1: ['IP', 'MC', 'FC', 'DCN'], 2: ['OOP', 'DSA', 'TW', 'DM'] },
-    2: { 1: ['PS', 'SE', 'AI', 'DDD'], 2: ['SE13', 'SE14', 'SE15', 'SE16'] },
+    2: { 1: ['PS', 'SE', 'AI', 'DDD'], 2: ['OSSA', 'WMT', 'ITP', 'PS'] },
     3: { 1: ['SE17', 'SE18', 'SE19', 'SE20'], 2: ['SE21', 'SE22', 'SE23', 'SE24'] },
     4: { 1: ['SE25', 'SE26', 'SE27', 'SE28'], 2: ['SE29', 'SE30', 'SE31', 'SE32'] }
   },
   'B.Sc. (Hons) in Information Technology - CSNE': {
     1: { 1: ['IP', 'MC', 'FC', 'DCN'], 2: ['OOP', 'DSA', 'TW', 'DM'] },
-    2: { 1: ['PS', 'SE', 'AI', 'DDD'], 2: ['CSNE13', 'CSNE14', 'CSNE15', 'CSNE16'] },
+    2: { 1: ['PS', 'SE', 'AI', 'DDD'], 2: ['OSSA', 'WMT', 'ITP', 'PS'] },
     3: { 1: ['CSNE17', 'CSNE18', 'CSNE19', 'CSNE20'], 2: ['CSNE21', 'CSNE22', 'CSNE23', 'CSNE24'] },
     4: { 1: ['CSNE25', 'CSNE26', 'CSNE27', 'CSNE28'], 2: ['CSNE29', 'CSNE30', 'CSNE31', 'CSNE32'] }
   },
   'B.Sc. (Hons) in Information Technology - ISE': {
     1: { 1: ['IP', 'MC', 'FC', 'DCN'], 2: ['OOP', 'DSA', 'TW', 'DM'] },
-    2: { 1: ['PS', 'SE', 'AI', 'DDD'], 2: ['ISE13', 'ISE14', 'ISE15', 'ISE16'] },
+    2: { 1: ['PS', 'SE', 'AI', 'DDD'], 2: ['OSSA', 'ISP', 'RE', 'PS'] },
     3: { 1: ['ISE17', 'ISE18', 'ISE19', 'ISE20'], 2: ['ISE21', 'ISE22', 'ISE23', 'ISE24'] },
     4: { 1: ['ISE25', 'ISE26', 'ISE27', 'ISE28'], 2: ['ISE29', 'ISE30', 'ISE31', 'ISE32'] }
   },
   'B.Sc. (Hons) in Information Technology - CS': {
     1: { 1: ['IP', 'MC', 'FC', 'DCN'], 2: ['OOP', 'DSA', 'TW', 'DM'] },
-    2: { 1: ['PS', 'SE', 'AI', 'DDD'], 2: ['CS13', 'CS14', 'CS15', 'CS16'] },
+    2: { 1: ['PS', 'SE', 'AI', 'DDD'], 2:['OSSA', 'WMT', 'ITP', 'PS'] },
     3: { 1: ['CS17', 'CS18', 'CS19', 'CS20'], 2: ['CS21', 'CS22', 'CS23', 'CS24'] },
     4: { 1: ['CS25', 'CS26', 'CS27', 'CS28'], 2: ['CS29', 'CS30', 'CS31', 'CS32'] }
   },
   'B.Sc. (Hons) in Information Technology - DS': {
     1: { 1: ['IP', 'MC', 'FC', 'DCN'], 2: ['OOP', 'DSA', 'TW', 'DM'] },
-    2: { 1: ['PS', 'SE', 'AI', 'DDD'], 2: ['DS13', 'DS14', 'DS15', 'DS16'] },
+    2: { 1: ['PS', 'SE', 'AI', 'DDD'], 2: ['OSSA', 'WMT', 'AIP', 'PS'] },
     3: { 1: ['DS17', 'DS18', 'DS19', 'DS20'], 2: ['DS21', 'DS22', 'DS23', 'DS24'] },
     4: { 1: ['DS25', 'DS26', 'DS27', 'DS28'], 2: ['DS29', 'DS30', 'DS31', 'DS32'] }
   },
   'B.Sc. (Hons) in Information Technology - IM': {
     1: { 1: ['IP', 'MC', 'FC', 'DCN'], 2: ['OOP', 'DSA', 'TW', 'DM'] },
-    2: { 1: ['PS', 'SE', 'AI', 'DDD'], 2: ['IM13', 'IM14', 'IM15', 'IM16'] },
+    2: { 1: ['PS', 'SE', 'AI', 'DDD'], 2: ['TE', 'CMF', 'VED', 'PS'] },
     3: { 1: ['IM17', 'IM18', 'IM19', 'IM20'], 2: ['IM21', 'IM22', 'IM23', 'IM24'] },
     4: { 1: ['IM25', 'IM26', 'IM27', 'IM28'], 2: ['IM29', 'IM30', 'IM31', 'IM32'] }
   },
   'B.Sc. (Hons) in Information Technology - AI': {
     1: { 1: ['IP', 'MC', 'FC', 'DCN'], 2: ['OOP', 'DSA', 'TW', 'DM'] },
-    2: { 1: ['PS', 'SE', 'AI', 'DDD'], 2: ['AI13', 'AI14', 'AI15', 'AI16'] },
+    2: { 1: ['PS', 'SE', 'AI', 'DDD'], 2: ['OSSA', 'WMT', 'AIP', 'PS'] },
     3: { 1: ['AI17', 'AI18', 'AI19', 'AI20'], 2: ['AI21', 'AI22', 'AI23', 'AI24'] },
     4: { 1: ['AI25', 'AI26', 'AI27', 'AI28'], 2: ['AI29', 'AI30', 'AI31', 'AI32'] }
   },
