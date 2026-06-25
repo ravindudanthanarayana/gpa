@@ -21,16 +21,6 @@ Calculate your Semester GPA (SGPA), Weighted GPA (WGPA), and estimate your degre
 
 ---
 
-## 📸 Preview
-
-> Add screenshots here
-
-| Desktop | Mobile |
-|----------|---------|
-| ![](docs/desktop.png) | ![](docs/mobile.png) |
-
----
-
 ## 🚀 Tech Stack
 
 - React
